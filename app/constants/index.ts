@@ -1,3 +1,7 @@
+export const APP_NAME = "Car Drive";
+
+export const APP_DESCRIPTION = "";
+
 /**
  * Where to redirect the user if they are not authenticated
  */

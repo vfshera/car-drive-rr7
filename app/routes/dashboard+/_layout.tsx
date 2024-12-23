@@ -20,7 +20,7 @@ import {
   SidebarMenuItem,
   SidebarProvider,
 } from "~/components/ui/sidebar";
-import { SIGNOUT_REDIRECT } from "~/utils/constants";
+import { SIGNOUT_REDIRECT } from "~/constants";
 import { Calendar, ChevronUp, Home, Inbox, Search, Settings, User2 } from "lucide-react";
 
 export async function loader({ request }: Route.LoaderArgs) {

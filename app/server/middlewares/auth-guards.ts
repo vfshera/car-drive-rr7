@@ -2,7 +2,7 @@
  * Auth guards middleware
  * @see - https://github.com/Shelf-nu/shelf.nu/blob/main/server/middleware.ts
  */
-import { REDIRECT_PATH_PARAM, UNAUTHENTICATED_REDIRECT } from "~/utils/constants";
+import { REDIRECT_PATH_PARAM, UNAUTHENTICATED_REDIRECT } from "~/constants";
 import type { AppBindings } from "../types";
 import { createMiddleware } from "hono/factory";
 import { pathToRegexp } from "path-to-regexp";

@@ -1,9 +1,9 @@
 import type { Route } from "./+types/register";
 import { Form, Link, redirect, useNavigate, useSearchParams } from "react-router";
 import { authClient } from "~/lib/auth.client";
+import { AUTHENTICATED_REDIRECT, REDIRECT_PATH_PARAM } from "~/constants";
 import { type SignupSchemaType, signupSchema } from "~/schemas/auth.schema";
 import { generateLinkWithRedirectTo } from "~/utils";
-import { AUTHENTICATED_REDIRECT, REDIRECT_PATH_PARAM } from "~/utils/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
