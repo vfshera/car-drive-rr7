@@ -1,6 +1,18 @@
 import { timestampColumns } from "./utils";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
+export const cars = sqliteTable("cars", {
+  id: integer("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
+  make: text("make").notNull(),
+  model: text("model").notNull(),
+  year: integer("year").notNull(),
+  price: integer("price").notNull(),
+  ...timestampColumns(),
+});
+
+/***
+ *  Auth Table Schemas
+ */
 export const users = sqliteTable("users", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
