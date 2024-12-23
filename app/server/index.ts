@@ -16,19 +16,12 @@ declare module "react-router" {
 
 export default await createHonoServer<AppBindings>({
   configure(server) {
-    /**
-     * Add session and user to the context
-     *  NOTE: Always put it first
-     */
+ 
     server.use(populateSession);
-
-    /**
-     * Add auth guards
-     */
+ 
     server.use(
       protect({
-        protectedPaths: [
-          "/protected",
+        protectedPaths: [ 
           "/dashboard",
           "/dashboard/*path", // *path is a wildcard that will match any path after /dashboard
         ],
