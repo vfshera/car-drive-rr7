@@ -1,10 +1,14 @@
+@import "/themify-icons.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html,
 body {
-  @apply bg-white;
+  @apply m-0 bg-white p-0;
+  box-sizing: border-box;
+  --scrollbarBG: #ccc;
+  --thumbBG: #14213d;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
@@ -90,4 +94,1482 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/*  Added */
+
+/* html,
+body,
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  --scrollbarBG: #ccc;
+  --thumbBG: #14213d;
+} */
+
+*:focus {
+  outline: none;
+}
+
+html,
+.chats,
+.search-results {
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
+}
+
+/* GLOBAL */
+
+.app-wrapper {
+  @apply flex min-h-screen flex-col;
+}
+
+.footer-wrapper {
+  @apply mt-auto;
+}
+
+.car-drive-container {
+  @apply px-3 sm:px-5 lg:px-10;
+}
+
+/* GLOBALEND */
+
+/* LOADER */
+.loader {
+  .loading {
+    @apply bg-brand-2 w-full;
+    height: 5px;
+    background: linear-gradient(90deg, #fca311, #fca311) center bottom/0 5px no-repeat;
+    animation: loaderLoading 1.2s ease infinite;
+  }
+}
+
+@keyframes loaderLoading {
+  0%,
+  100% {
+    background-size: 0 5px;
+  }
+
+  75% {
+    background-size: 100% 5px;
+  }
+}
+
+/* LOADER END */
+
+/* FILE UPLOAD */
+
+.cardrive-file-upload-wrapper {
+  .file-upload {
+    @apply min-h-150 md:min-h-300 flex w-full items-center justify-center rounded-md bg-white shadow;
+
+    .browse-area {
+      @apply min-h-135 md:min-h-280 w-95/100 flex cursor-pointer items-center justify-center rounded-md border-2 border-dashed border-blue-500 bg-white hover:bg-gray-100;
+
+      .info {
+        @apply flex flex-col items-center justify-center;
+
+        i {
+          @apply mb-2 text-5xl font-bold text-blue-500;
+        }
+
+        p.file-name {
+          @apply font-bold text-gray-700;
+        }
+
+        p.file-size {
+          @apply text-gray-600;
+        }
+      }
+    }
+  }
+}
+/* FILE UPLOAD END */
+
+/* INPUT GLOBAL STYLES */
+
+.radio-group {
+  @apply my-5 flex w-4/5 items-center justify-between lg:w-3/5;
+}
+
+.input-group {
+  @apply my-2 flex flex-col;
+
+  --anim-duration: 0.2s;
+  --anim-easing: ease-out;
+
+  .field-errors {
+    @apply text-xs italic text-red-600;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"],
+  input.with-datalist {
+    @apply appearance-none p-2;
+    background:
+      linear-gradient(90deg, #14213d44, #14213d) center bottom/0 2px no-repeat,
+      linear-gradient(90deg, #11111144, #11111144) left bottom/100% 2px no-repeat,
+      linear-gradient(90deg, #f3f4f633, #f3f4f633) left bottom/100% no-repeat;
+
+    transition: background-size 0.3s ease;
+
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border: none;
+    outline: none;
+  }
+
+  input[type="file"] {
+    @apply appearance-none p-2;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border: 3px #f3f4f6cc solid;
+    outline: none;
+  }
+
+  select {
+    @apply my-2 appearance-none p-2;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border: 3px #f3f4f6cc solid;
+    outline: none;
+  }
+
+  label {
+    @apply text-base font-semibold text-gray-800 sm:text-lg lg:text-xl;
+  }
+
+  label .hint-box {
+    @apply ml-2 text-sm font-normal italic;
+  }
+
+  textarea {
+    @apply p-2;
+
+    border: #11111144 2px solid;
+    outline: none;
+    border-radius: 3px;
+    background-color: #f3f4f633;
+    transition:
+      border-left-color var(--anim-duration) var(--anim-easing),
+      border-top-color var(--anim-duration) var(--anim-easing) calc(var(--anim-duration) * 1),
+      border-right-color var(--anim-duration) var(--anim-easing) calc(var(--anim-duration) * 2),
+      border-bottom-color var(--anim-duration) var(--anim-easing) calc(var(--anim-duration) * 3);
+  }
+
+  textarea:focus {
+    border: #14213d 2px solid;
+    transition:
+      border-bottom-color var(--anim-duration) var(--anim-easing),
+      border-right-color var(--anim-duration) var(--anim-easing) calc(var(--anim-duration) * 1),
+      border-top-color var(--anim-duration) var(--anim-easing) calc(var(--anim-duration) * 2),
+      border-left-color var(--anim-duration) var(--anim-easing) calc(var(--anim-duration) * 3);
+  }
+
+  input:focus {
+    background-size:
+      100% 2px,
+      100% 2px,
+      100%;
+  }
+
+  input,
+  textarea {
+    @apply mb-3 mt-1 flex flex-col sm:mb-6 sm:mt-3;
+  }
+}
+
+/* INPUT GLOBAL STYLES END */
+.mobile-nav {
+  @apply fixed left-0 top-0 z-50 flex min-h-screen w-full flex-col items-center p-5 py-10;
+
+  .branding {
+    a {
+      img {
+        height: 3.5rem !important;
+      }
+    }
+  }
+
+  i.nav-toggle {
+    @apply mt-5;
+  }
+
+  nav {
+    @apply flex flex-col;
+
+    display: block !important;
+
+    ul.link-list {
+      @apply my-10 flex flex-col items-center gap-5 md:my-0 md:flex-row md:gap-8;
+
+      li {
+        @apply hover:border-brand-2 border-b-2 border-transparent transition-all delay-100;
+        a {
+          @apply uppercase;
+        }
+      }
+
+      &.guest-routes {
+        @apply mt-10 flex flex-col items-center justify-center gap-3 md:flex-row;
+        margin-left: 0 !important;
+
+        li {
+          @apply border-brand-2 hover:bg-brand-2 rounded-md border px-4 py-1.5 hover:border-transparent;
+
+          a {
+            @apply sm:font-semibold lg:font-bold;
+          }
+        }
+      }
+
+      &.auth-routes {
+        @apply mt-5 md:ml-10 md:mt-0;
+        margin-left: 0 !important;
+
+        li.admin-nav {
+          @media (min-width: 640px) {
+            display: none !important;
+          }
+        }
+
+        span {
+          @apply uppercase;
+        }
+      }
+    }
+  }
+}
+
+.normal-nav {
+  @apply flex h-16 items-center justify-between;
+}
+
+.navbar-wrapper {
+  @apply bg-brand-1 text-white;
+
+  .branding {
+    img {
+      @apply h-8;
+    }
+  }
+
+  i.nav-toggle {
+    @apply text-brand-2 cursor-pointer text-3xl sm:hidden sm:text-xl;
+  }
+
+  nav {
+    @apply hidden sm:flex sm:items-center sm:gap-4;
+
+    ul.link-list {
+      @apply flex items-center gap-8;
+
+      li {
+        @apply hover:border-brand-2 border-b-2 border-transparent transition-all delay-100;
+      }
+
+      &.guest-routes {
+        @apply ml-10 flex items-center gap-3;
+
+        li {
+          @apply border-brand-2 hover:bg-brand-2 rounded-md border px-4 py-1.5 hover:border-transparent;
+
+          a {
+            @apply sm:font-semibold lg:font-bold;
+          }
+        }
+      }
+
+      &.auth-routes {
+        @apply ml-10;
+
+        li.admin-nav-link {
+          @apply sm:hidden;
+        }
+      }
+    }
+  }
+
+  /* &.user-logged-in { */
+  /* } */
+}
+
+.footer-wrapper {
+  footer {
+    @apply text-brand-1 flex h-20 items-center justify-center text-center font-bold;
+  }
+}
+
+.home-page {
+  section.hero {
+    @apply bg-brand-1 text-white;
+    height: 70vh;
+  }
+}
+.about-page {
+  @apply flex w-full flex-col items-center justify-center bg-white py-10;
+
+  h1 {
+    @apply text-brand-1 text-3xl font-bold;
+  }
+
+  .about-content {
+    @apply flex w-11/12 flex-col items-center justify-center sm:w-2/3 lg:w-1/2;
+
+    .content-item {
+      @apply mt-10 flex flex-col items-center;
+
+      .explanation {
+        @apply w-95/100 md:w-2/3;
+
+        p {
+          @apply text-center text-gray-800;
+
+          a {
+            strong {
+              @apply text-brand-2;
+            }
+          }
+        }
+      }
+
+      .tech-stack {
+        @apply w-95/100 mt-10 flex flex-col items-center justify-center sm:w-2/3;
+
+        p {
+          @apply text-brand-1 text-lg font-semibold;
+        }
+
+        .stacks {
+          @apply mt-5 grid w-3/4 grid-cols-3 gap-4 sm:w-full;
+
+          .stack {
+            @apply my-2 flex flex-col items-center justify-center;
+            img {
+              @apply h-7 sm:h-8;
+            }
+
+            p {
+              @apply text-sm text-gray-800;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.contact-page {
+  @apply flex w-full flex-col items-center justify-center;
+
+  .is-sent {
+    @apply min-h-3/4vh flex flex-col items-center justify-center;
+
+    i {
+      @apply mb-2 rounded-full border-4 border-green-600 p-10 text-7xl text-green-600;
+    }
+
+    h2 {
+      @apply text-brand-1 text-xl font-semibold;
+    }
+
+    p {
+      @apply text-gray-600;
+    }
+  }
+
+  .contact-form-wrapper {
+    @apply w-full;
+
+    form {
+      @apply items-center;
+      .input-group {
+        @apply w-full;
+      }
+
+      button[type="submit"] {
+        @apply bg-brand-1 flex w-1/3 items-center justify-center py-4 font-bold text-white hover:rounded-xl;
+      }
+    }
+  }
+}
+
+.contact-page .contact-form-wrapper,
+.login-page,
+.register-page {
+  @apply flex flex-col items-center justify-center pt-20;
+
+  h1 {
+    @apply text-brand-1 text-3xl font-bold;
+  }
+
+  form {
+    @apply flex w-10/12 flex-col justify-center sm:w-3/5 lg:w-2/5;
+
+    .form-btns {
+      @apply flex items-center justify-between;
+
+      button[type="submit"] {
+        @apply bg-brand-1 flex w-1/3 items-center justify-center py-4 font-bold text-white hover:rounded-xl;
+      }
+
+      button.social-login-btn {
+        @apply text-brand-1 hover:border-brand-1 flex items-center justify-center border bg-gray-200 px-4 py-4 font-bold sm:px-8;
+
+        i {
+          @apply ml-2;
+        }
+      }
+    }
+  }
+}
+.profile-page {
+  @apply min-h-app-mscreen sm:min-h-app-screen flex flex-col p-5 lg:p-10;
+
+  h1 {
+    @apply text-brand-1 text-xl font-bold sm:text-3xl;
+  }
+
+  .update-info {
+    @apply mt-12;
+
+    h1 {
+      @apply text-lg font-bold;
+    }
+
+    .update-actions {
+      @apply my-3 flex flex-col sm:flex-row;
+
+      .note {
+        @apply text-brand-2 bg-brand-1 rounded-md p-3 shadow-sm;
+
+        p {
+          @apply text-base font-semibold;
+
+          span {
+            @apply font-bold;
+          }
+        }
+      }
+    }
+    .allowed-updates {
+      @apply mt-5 flex flex-col justify-between;
+
+      .fields {
+        @apply flex w-full flex-col transition-all sm:flex-row sm:justify-between lg:space-x-4;
+
+        .input-group {
+          &.two-fields {
+            @apply sm:w-30/100 w-full lg:w-1/2;
+          }
+
+          &.three-fields {
+            @apply sm:w-30/100 w-full lg:w-1/3;
+          }
+
+          label {
+          }
+
+          input {
+          }
+        }
+      }
+
+      button {
+        @apply w-full bg-blue-500 px-10 py-5 font-semibold text-white hover:rounded-md md:w-1/3 lg:w-1/4;
+      }
+    }
+  }
+
+  .current-info {
+    @apply mt-2 grid grid-cols-1 gap-4 sm:mt-5 sm:grid-cols-2;
+
+    .details {
+      @apply flex flex-col;
+
+      .detail {
+        @apply flex w-1/2 flex-col sm:w-full;
+
+        .title {
+          @apply text-brand-1 text-base font-semibold sm:text-xl sm:font-bold;
+        }
+
+        .value {
+          @apply text-base text-gray-800 sm:text-lg;
+        }
+
+        &:not(:last-child) {
+          @apply mb-3 sm:mb-5;
+        }
+      }
+    }
+
+    .social-accounts {
+      @apply my-3 flex flex-col sm:my-0;
+
+      h2 {
+        @apply text-brand-1 text-lg font-semibold sm:text-xl sm:font-bold;
+      }
+
+      .social-account {
+        @apply my-2 flex items-center;
+
+        i {
+          @apply text-brand-1 mr-2 text-xl;
+        }
+
+        .brand {
+          @apply ml-2 text-lg text-gray-700;
+        }
+      }
+    }
+  }
+}
+
+.social-login-providers-page {
+  @apply flex min-h-screen flex-col items-center justify-center;
+
+  section.provider-buttons {
+    @apply w-95/100 flex flex-col items-center justify-center md:w-2/3 lg:w-1/3;
+
+    button {
+      @apply bg-brand-1 flex w-3/5 items-center justify-center rounded-md py-4 text-white;
+
+      span {
+        @apply ml-2 flex items-center justify-center font-bold text-white;
+
+        i {
+          @apply mr-2 text-xl;
+        }
+      }
+
+      &:not(:last-child) {
+        @apply mb-2;
+      }
+    }
+
+    .note {
+      @apply text-brand-1 mt-4 text-center text-sm opacity-80;
+    }
+  }
+}
+
+.login-resolve-page {
+  @apply min-h-1/2vh flex items-center justify-center;
+
+  h1 {
+    @apply text-brand-1 font-bold;
+  }
+}
+
+/* DASHBOARD PAGE */
+
+.dashboard-page {
+  @apply min-h-app-mscreen sm:min-h-app-screen p-5 lg:p-10;
+
+  h1 {
+    @apply text-brand-1 text-base font-bold md:text-2xl lg:text-3xl;
+  }
+
+  section.dash-items {
+    @apply mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3 lg:grid-cols-4;
+
+    a {
+      .item-card {
+        @apply flex flex-col items-center justify-center rounded-md border border-gray-100 bg-white py-7 shadow sm:p-5 lg:p-10;
+
+        i {
+          @apply text-brand-1 text-2xl font-bold lg:text-3xl;
+        }
+
+        p {
+          @apply text-xl font-bold text-gray-700 lg:text-2xl;
+        }
+
+        span {
+          @apply text-xl font-semibold text-gray-700 lg:text-2xl;
+        }
+      }
+    }
+  }
+}
+/* DASHBOARD PAGE END */
+
+/* CAR LISTING COMPONENT */
+section.car-list-wrapper {
+  @apply my-4 flex flex-col sm:my-7 lg:my-10;
+
+  .add-cars,
+  .list-header button.add-cars {
+    @apply bg-brand-1 px-5 py-1 text-white hover:rounded;
+
+    i {
+    }
+  }
+
+  .list-header {
+    @apply flex items-center justify-between;
+
+    h1 {
+      @apply text-brand-1 text-xl font-bold md:text-2xl lg:text-3xl;
+    }
+
+    span {
+      @apply text-brand-1 text-base font-semibold lg:text-lg;
+    }
+
+    a {
+      @apply text-brand-1 hover:text-brand-2 text-base font-bold transition-all delay-100 md:text-xl;
+
+      i {
+        @apply lg:hidden;
+      }
+
+      &:hover {
+        i {
+          @apply inline-block;
+        }
+      }
+    }
+  }
+
+  section.car-list {
+    @apply mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:gap-8;
+
+    a {
+      .car-card {
+        @apply bg-brand-1 h-200 lg:h-300 cursor-pointer transition-all delay-100 ease-in-out hover:rounded-md hover:shadow-md;
+
+        .caption-wrapper {
+          @apply flex h-full w-full justify-end;
+
+          .caption {
+            @apply bg-brand-3 text-brand-1 flex h-1/5 w-1/2 flex-col self-end px-2 py-1 hover:rounded-tl lg:w-2/5 lg:justify-between lg:p-2;
+
+            .title {
+              @apply border-brand-2 border-r-2;
+
+              h2 {
+                @apply text-base font-bold lg:text-xl;
+                line-height: 1;
+              }
+            }
+
+            .description {
+              @apply flex flex-row items-center;
+
+              h2 {
+                @apply text-xs lg:text-lg;
+                line-height: 1;
+              }
+
+              h3 {
+                @apply ml-2 text-xs lg:text-lg;
+              }
+            }
+          }
+        }
+
+        &:hover {
+          filter: sepia(20%);
+          transform: rotate(2deg) scale(0.97);
+
+          .caption-wrapper .caption {
+            @apply hover:rounded-tl;
+          }
+        }
+      }
+    }
+  }
+
+  .pagination {
+    @apply mt-10 flex items-center justify-between;
+
+    button {
+      @apply text-brand-1 hover:bg-brand-1 hover:text-brand-3 bg-gray-200 px-4 py-1 text-sm font-semibold shadow sm:px-5 sm:text-base lg:px-10 lg:py-2;
+
+      &.disabled {
+        @apply bg-gray-200 text-gray-400;
+      }
+
+      &.prev,
+      &.next {
+        @apply hidden lg:inline-block;
+      }
+    }
+
+    .page-numbers {
+      @apply grid grid-cols-6 gap-3 sm:grid-cols-10 lg:inline-block lg:grid-cols-none lg:gap-0;
+
+      button {
+        @apply bg-brand-1 text-brand-3 hover:text-brand-1 mx-1 px-4 py-1 text-sm shadow hover:bg-gray-200 sm:text-base sm:font-semibold lg:px-5 lg:py-2;
+      }
+
+      button.current-page {
+        @apply bg-brand-3 text-brand-1 border-brand-2 hover:bg-brand-1 hover:text-brand-2 mx-1 border-t-2 px-4 py-1 text-sm shadow sm:text-base sm:font-bold lg:px-5 lg:py-2;
+      }
+
+      button.peak-page {
+        @apply bg-brand-3 border-brand-1 text-brand-1 hover:bg-brand-1 hover:text-brand-2 mx-1 border-2 px-4 py-1 text-sm shadow sm:text-base sm:font-bold lg:px-5 lg:py-2;
+      }
+
+      button.showmore.disabled {
+        @apply text-brand-1 bg-gray-100 px-2 py-1 text-sm shadow-none sm:text-base lg:px-3 lg:py-2;
+      }
+    }
+  }
+}
+/* CAR LISTING COMPONENT END */
+
+/* SINGLE CAR PAGE */
+
+.single-car-page {
+  @apply min-h-app-mscreen sm:min-h-app-screen;
+  .single-car-wrapper {
+    @apply my-3 flex flex-col sm:mt-10;
+
+    .title {
+      @apply text-brand-1 mb-3 flex items-center;
+      a {
+        @apply text-2xl font-bold;
+      }
+      span {
+        @apply text-brand-2 px-2 text-2xl;
+      }
+
+      h2 {
+        @apply text-2xl font-bold;
+      }
+
+      h3 {
+        @apply ml-2 text-2xl;
+      }
+    }
+
+    .details {
+      @apply sm:h-3/4vh flex flex-col lg:flex-row lg:justify-between;
+      /* height: 70vh; */
+
+      .car-photo {
+        @apply h-300 lg:h-3/4vh w-full lg:w-4/5;
+      }
+
+      .description {
+        @apply bg-brand-3 flex w-full flex-col p-0 sm:p-3 lg:w-1/5;
+
+        .information {
+          @apply flex flex-row justify-between lg:flex-col;
+          p {
+            @apply text-brand-1;
+            span {
+              @apply font-bold;
+            }
+          }
+        }
+
+        .photos {
+          @apply mt-3 grid grid-cols-3 gap-1 md:grid-cols-7 lg:grid-cols-3;
+
+          .photo {
+            @apply bg-brand-1;
+            width: 80px;
+            height: 80px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* SINGLE CAR PAGE END */
+
+/* DASBOARD */
+.dash-wrapper {
+  .dash {
+    @apply min-h-app-mscreen sm:min-h-app-screen sm:h-appFull flex justify-between sm:min-h-0;
+
+    /* height: calc(100vh - 4rem); */
+
+    aside.sidebar {
+      @apply border-brand-1 fixed left-0 z-10 hidden h-full w-2/12 border-r md:block;
+
+      .countd {
+        @apply text-brand-1 border-brand-1 border-b p-5 text-xs font-semibold lg:p-10 lg:text-sm;
+
+        i {
+          @apply mr-1;
+        }
+      }
+
+      ul.navigation {
+        @apply flex flex-col gap-3 p-5 lg:p-10;
+
+        li {
+          a {
+            @apply text-brand-1 text-base font-bold lg:text-xl;
+          }
+        }
+      }
+    }
+
+    section.admin-content {
+      @apply bg-brand-3 ml-auto h-full w-full md:w-10/12;
+    }
+  }
+}
+/* DASBOARD END */
+
+section.admin-content {
+  /* NEW CHAT */
+  .new-message {
+    @apply min-h-app-mscreen sm:min-h-app-screen p-3 sm:p-10;
+
+    h1 {
+      @apply text-brand-1 text-xl font-bold md:text-2xl lg:text-3xl;
+    }
+
+    .create-message-form {
+      form {
+        button {
+          @apply bg-brand-1 flex w-2/5 items-center justify-center py-4 font-bold text-white hover:rounded-xl;
+        }
+
+        .form-inputs {
+          @apply flex flex-col justify-between sm:flex-row;
+
+          .with-user,
+          .recepient-input,
+          .subject-input {
+            @apply w-full;
+          }
+        }
+
+        .form-btns {
+          @apply flex items-center justify-between;
+
+          button {
+            @apply flex w-2/5 items-center justify-center py-4 font-bold text-white hover:rounded-xl sm:w-1/3;
+
+            &[type="submit"] {
+              @apply bg-brand-1;
+            }
+
+            &.cancelBtn {
+              @apply bg-red-800;
+            }
+          }
+        }
+      }
+    }
+  }
+  /* NEW CHAT END */
+
+  /* CHATS */
+
+  .no-chats {
+    @apply min-h-app-mscreen sm:min-h-app-screen flex flex-col items-center justify-center;
+
+    p {
+      @apply mb-2 text-xl;
+    }
+
+    small {
+      @apply mb-2 text-sm;
+    }
+
+    button.start-messaging {
+      @apply bg-brand-1 rounded-md px-6 py-2 text-white;
+    }
+  }
+
+  .chat-wrapper {
+    .chat-head {
+      @apply mt-5 px-3 sm:mt-3 sm:px-10;
+
+      h1 {
+        @apply text-brand-1 text-2xl font-bold lg:text-3xl;
+      }
+
+      &.chats-home {
+        @apply flex items-center justify-between;
+
+        button {
+          @apply bg-brand-1 rounded-md px-4 py-2 text-white sm:px-6;
+        }
+      }
+    }
+
+    .chat-user-wrapper {
+      @apply min-h-app-mscreen sm:min-h-app-screen flex;
+
+      .recepient-profile {
+        @apply min-h-app-mscreen sm:min-h-app-screen hidden bg-white shadow-lg sm:block sm:w-1/4;
+
+        .profile-pic {
+          @apply relative h-2/5 border-b border-gray-100;
+
+          .shader {
+            background: linear-gradient(to bottom, transparent, #ffffff);
+
+            @apply absolute bottom-0 left-0 h-1/4 w-full;
+          }
+        }
+
+        .messages-count,
+        .postings .posting-count {
+          @apply flex justify-between px-4 py-3;
+
+          h3 {
+            @apply text-brand-1 inline-block text-base font-bold md:text-lg lg:text-xl;
+          }
+
+          span {
+            @apply text-brand-1 text-sm md:text-base lg:text-lg;
+          }
+        }
+
+        .postings {
+          @apply flex flex-col;
+
+          h3 {
+            @apply text-brand-1 text-base font-bold md:text-lg lg:text-xl;
+          }
+
+          .photos {
+            @apply mt-3 grid grid-cols-3 gap-1 px-4 md:grid-cols-7 lg:grid-cols-3;
+
+            a {
+              .photo {
+                @apply bg-brand-1;
+                width: 80px;
+                height: 80px;
+              }
+            }
+          }
+        }
+      }
+
+      .user-chats {
+        @apply bg-brand-3 flex w-full flex-col sm:w-3/4;
+
+        .chat-head {
+          @apply mt-0 bg-white px-4 py-1;
+
+          .name-status {
+            @apply flex items-center;
+
+            h1 {
+              @apply text-brand-1 inline text-lg font-bold md:text-xl lg:text-2xl;
+            }
+
+            .status {
+              @apply ml-2;
+
+              &.active {
+                @apply text-green-500;
+              }
+
+              &.inactive {
+                @apply text-red-500;
+              }
+            }
+
+            .typing {
+              @apply ml-2 text-gray-700;
+            }
+          }
+
+          span {
+            @apply text-xs text-gray-500 md:text-sm;
+          }
+        }
+
+        .message-input {
+          @apply bg-brand-3 mt-auto flex items-center px-4 pb-2 shadow-sm sm:pb-4;
+
+          input {
+            @apply w-4/5 rounded-bl-md rounded-tl-md bg-white p-2 text-gray-700 sm:w-11/12;
+          }
+
+          button {
+            @apply bg-brand-1 w-1/5 rounded-br-md rounded-tr-md py-2 font-bold text-white sm:w-1/12;
+          }
+        }
+        .chats {
+          @apply bg-brand-3 h-4/5vh md:h-3/4vh overflow-hidden overflow-y-scroll;
+
+          .received,
+          .sent {
+            @apply w-full px-4;
+
+            .message-wrapper {
+              @apply my-3 w-full rounded-lg px-3 py-2 shadow sm:w-2/3 sm:rounded-2xl sm:p-4 sm:shadow-sm;
+
+              .sender {
+                @apply flex justify-between;
+
+                h2 {
+                  @apply text-sm font-semibold text-white sm:text-base sm:font-bold;
+                }
+
+                span {
+                  @apply text-xs sm:text-base;
+                }
+              }
+
+              .message {
+              }
+            }
+          }
+
+          .received {
+            .message-wrapper {
+              @apply text-brand-1 mr-auto rounded-bl-none bg-white;
+
+              .sender {
+                @apply flex justify-between;
+
+                h2 {
+                  @apply text-brand-1 font-bold;
+                }
+
+                span {
+                  @apply text-gray-600;
+                }
+              }
+
+              .message {
+                @apply text-gray-800;
+              }
+            }
+          }
+
+          .sent {
+            .message-wrapper {
+              @apply bg-brand-1 text-brand-3 ml-auto cursor-pointer rounded-br-none;
+
+              .sender {
+                @apply flex justify-between;
+
+                h2 {
+                  @apply text-brand-3 font-bold;
+                }
+
+                span {
+                  @apply text-gray-200;
+                }
+              }
+
+              .message {
+                @apply text-white;
+              }
+
+              .actions {
+                @apply relative bottom-0 right-0;
+
+                .action-cover {
+                  @apply absolute -bottom-7 z-10 flex h-8 w-8 items-center justify-center rounded bg-white shadow-sm;
+                  i {
+                    @apply text-lg font-bold;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .chats {
+      @apply bg-brand-3 h-4/5vh flex flex-col overflow-hidden overflow-y-scroll py-3 sm:py-2;
+
+      a {
+        &:first-child {
+          .chat-preview {
+            @apply border-t border-gray-300;
+          }
+        }
+
+        .chat-preview {
+          @apply flex cursor-pointer border-b border-gray-300 px-3 py-2 hover:bg-white sm:px-10 sm:py-4;
+
+          .profile {
+            @apply flex items-center;
+            .avatar {
+              @apply bg-brand-1 text-brand-3 flex h-14 w-14 items-center justify-center rounded-full font-extrabold;
+            }
+          }
+
+          .info {
+            @apply ml-5 flex w-11/12 flex-col;
+
+            .sender {
+              @apply flex justify-between;
+
+              h2 {
+                @apply text-brand-1 text-base font-bold;
+              }
+
+              span {
+                @apply text-xs text-gray-600 sm:text-base;
+              }
+            }
+
+            .message {
+              @apply text-gray-600;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* CHATS END */
+
+  /* ADD CAR SEARCH */
+  aside.search-drawer-wrapper {
+    @apply relative right-0 top-0 w-full sm:-top-10;
+
+    .search-drawer {
+      @apply min-h-app-mscreen sm:min-h-app-screen absolute right-0 top-0 z-20 ml-0 flex w-full flex-col items-center shadow sm:ml-auto sm:w-2/3 xl:w-1/3;
+      backdrop-filter: blur(25px) saturate(200%);
+      background-color: rgba(236, 236, 236, 0.9);
+
+      .map-search {
+        @apply absolute top-5 z-50 flex w-full flex-col items-center justify-center;
+
+        h1 {
+          @apply text-brand-1 text-xl font-bold;
+        }
+
+        .search-box {
+          @apply mt-3 flex h-8 w-4/5 items-center;
+
+          input {
+            @apply focus:border-brand-1 text-brand-1 w-full rounded-md border border-gray-500 px-3 py-1.5 text-center text-base;
+          }
+        }
+
+        .search-results {
+          @apply mt-2 flex w-4/5 flex-col overflow-hidden overflow-y-scroll;
+
+          max-height: 70vh;
+
+          .search-result {
+            @apply hover:text-brand-1 my-1 w-full cursor-pointer bg-gray-100 p-2 text-sm text-gray-600 hover:bg-gray-200;
+          }
+        }
+
+        .searching,
+        .result-count,
+        .no-results,
+        .init-type-prompt {
+          @apply mt-3 w-full text-center text-sm text-gray-600;
+        }
+
+        button.closeSearch {
+          @apply mt-3 rounded-md bg-red-500 px-5 py-2 text-base text-white;
+        }
+      }
+    }
+  }
+  /* ADD CAR SEARCH END */
+
+  /* SINGLECAR FIX */
+  .single-car-page {
+    .single-car-wrapper {
+      @apply flex flex-col;
+
+      button {
+        @apply text-2xl font-bold;
+      }
+
+      .details {
+        .car-photo {
+          @apply flex w-full justify-end lg:w-3/4;
+
+          .delete-image {
+            @apply cursor-pointer self-end bg-white px-3 py-2 font-bold hover:bg-red-500 hover:text-white;
+
+            i {
+              @apply text-base font-bold text-red-500;
+            }
+
+            span {
+              @apply ml-2 hidden text-base;
+            }
+
+            &:hover {
+              i {
+                @apply text-white;
+              }
+              span {
+                @apply inline;
+              }
+            }
+          }
+        }
+
+        .description {
+          @apply mt-3 w-full sm:mt-0 lg:w-1/4;
+
+          .photos {
+            @apply mt-3 grid grid-cols-3 gap-2 md:grid-cols-4 lg:grid-cols-3;
+
+            .no-photo {
+              @apply flex cursor-pointer items-center justify-center bg-gray-300;
+              width: 80px;
+              height: 80px;
+
+              i {
+                @apply text-brand-1 text-2xl font-bold transition-all delay-100;
+              }
+
+              &:hover {
+                @apply bg-blue-500;
+
+                i {
+                  @apply text-3xl font-extrabold text-white;
+                }
+              }
+            }
+          }
+
+          .actions {
+            @apply mt-10 flex flex-col sm:flex-row sm:justify-between lg:flex-col;
+
+            button {
+              @apply w-full rounded-md py-3 transition-all delay-75 sm:w-5/12 lg:w-full;
+
+              i {
+                @apply mr-2;
+              }
+
+              &.map {
+                @apply bg-green-700 text-white hover:bg-green-900;
+              }
+
+              &.chat {
+                @apply bg-blue-600 text-white hover:bg-blue-900;
+              }
+              &.remove-post {
+                @apply bg-red-600 text-white hover:bg-red-900;
+              }
+
+              &:not(:last-child) {
+                @apply mb-3 sm:mb-0 lg:mb-3;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .car-map-overlay-wrapper {
+    @apply fixed right-0 top-0 z-30;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(#cccccc, 0.9);
+
+    .map-overlay {
+      @apply text-brand-1 absolute right-0 top-0 z-40 bg-white shadow;
+      width: 80vw;
+      height: 100vw;
+
+      .close-handler {
+        @apply relative transition-all delay-100;
+
+        button.close {
+          @apply absolute -left-10 text-5xl font-bold;
+        }
+      }
+
+      .map-feed {
+      }
+    }
+  }
+
+  /* SINGLECAR FIX */
+
+  /* CAR LISTING FIX */
+  .car-list-wrapper {
+    @apply min-h-app-mscreen sm:min-h-app-screen;
+
+    .add-car-form-wrapper {
+      @apply bg-brand-3;
+
+      .add-car-form {
+        @apply flex flex-col items-center justify-center pt-5;
+
+        h1 {
+          @apply text-brand-1 text-3xl font-bold;
+        }
+
+        form {
+          @apply flex w-11/12 flex-col justify-center lg:w-4/5;
+
+          .form-input-section {
+            @apply flex flex-col sm:flex-row sm:justify-between;
+
+            .form-col {
+              @apply w-full sm:w-1/2;
+
+              .showroom {
+                @apply my-3;
+
+                h3 {
+                  @apply mb-2 text-xl font-semibold text-gray-800;
+                }
+                .location {
+                  @apply mt-3 flex justify-between;
+
+                  p {
+                    @apply mr-2 flex w-2/3 items-center justify-center rounded-md bg-gray-100 text-gray-400;
+                  }
+
+                  button {
+                    @apply bg-blue-500 p-2 text-white hover:rounded-md;
+                  }
+                }
+              }
+
+              .file-upload {
+                @apply my-6;
+
+                h3 {
+                  @apply mb-2 text-xl font-semibold text-gray-800;
+                }
+              }
+            }
+          }
+
+          .form-btns {
+            @apply flex items-center justify-between;
+
+            button[type="submit"] {
+              @apply bg-brand-1 mr-5 flex w-1/2 items-center justify-center py-4 font-bold text-white hover:rounded-xl;
+            }
+
+            button.cancelBtn {
+              @apply ml-5 flex w-1/2 items-center justify-center bg-red-800 py-4 font-bold text-white hover:rounded-xl;
+            }
+          }
+        }
+      }
+    }
+
+    .list-header {
+      @apply flex items-center justify-between;
+
+      h1 {
+        @apply text-brand-1 text-base font-bold md:text-lg lg:text-xl;
+      }
+
+      span {
+        @apply text-brand-1 text-sm font-semibold lg:text-base;
+      }
+
+      a {
+        @apply text-brand-1 hover:text-brand-2 text-sm font-bold transition-all delay-100 md:text-base;
+
+        i {
+          @apply lg:hidden;
+        }
+
+        &:hover {
+          i {
+            @apply inline-block;
+          }
+        }
+      }
+    }
+
+    section.car-list {
+      @apply mt-4 grid grid-cols-1 gap-1 sm:grid-cols-2 md:grid-cols-3 md:gap-3 lg:gap-6;
+
+      a {
+        .car-card {
+          @apply bg-brand-1 h-200 md:h-150 lg:h-200 cursor-pointer;
+
+          .caption-wrapper {
+            @apply flex h-full w-full justify-end;
+
+            .caption {
+              @apply flex h-1/5 w-1/2 flex-col self-end px-2 py-1 sm:h-1/4 lg:w-2/5 lg:justify-between lg:p-2;
+
+              .title {
+                @apply border-brand-2 border-r-2;
+
+                h2 {
+                  @apply text-sm font-bold lg:text-base;
+                  line-height: 0.8;
+                }
+              }
+
+              .description {
+                @apply flex flex-row items-center;
+
+                h2 {
+                  @apply text-xs lg:text-sm;
+                  line-height: 0.8;
+                }
+
+                h3 {
+                  @apply ml-2 text-xs lg:text-sm;
+                }
+              }
+            }
+          }
+
+          &:hover {
+            filter: sepia(20%);
+            transform: rotate(2deg) scale(0.97);
+
+            .caption-wrapper .caption {
+              @apply hover:rounded-tl;
+            }
+          }
+        }
+      }
+
+      .car-card.skeleton {
+        @apply min-h-100 md:min-h-150 lg:min-h-200 cursor-pointer bg-gray-300;
+
+        .caption-wrapper {
+          @apply flex h-full w-full justify-end;
+
+          .caption {
+            @apply flex h-1/4 w-1/2 flex-col self-end bg-gray-200 px-2 py-1 opacity-80 sm:h-1/4 lg:w-2/5 lg:justify-between lg:p-2;
+
+            .title {
+              @apply h-2/5 bg-gray-500;
+            }
+
+            .description {
+              @apply h-1/4 bg-gray-400;
+            }
+          }
+        }
+      }
+    }
+  }
+  /* CAR LISTING FIX END */
 }
