@@ -1,4 +1,5 @@
-import { Form, Link, useNavigate, useSearchParams } from "react-router";
+import type { Route } from "./+types/login";
+import { Form, Link, redirect, useNavigate, useSearchParams } from "react-router";
 import { authClient } from "~/lib/auth.client";
 import { GithubIcon } from "~/components/icons";
 import { type LoginSchemaType, loginSchema } from "~/schemas/auth.schema";
@@ -10,6 +11,14 @@ import { toast } from "sonner";
 
 export function meta() {
   return [{ title: "Login" }];
+}
+
+export async function loader({ context }: Route.LoaderArgs) {
+  if (context.isAuthenticated) {
+    return redirect(AUTHENTICATED_REDIRECT);
+  }
+
+  return {};
 }
 
 export default function Login() {

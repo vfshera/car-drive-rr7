@@ -1,7 +1,6 @@
-import { Form, Link, useNavigate, useSearchParams } from "react-router";
+import type { Route } from "./+types/register";
+import { Form, Link, redirect, useNavigate, useSearchParams } from "react-router";
 import { authClient } from "~/lib/auth.client";
-import { Button } from "~/components/ui/button";
-import { Input } from "~/components/ui/input";
 import { type SignupSchemaType, signupSchema } from "~/schemas/auth.schema";
 import { generateLinkWithRedirectTo } from "~/utils";
 import { AUTHENTICATED_REDIRECT, REDIRECT_PATH_PARAM } from "~/utils/constants";
@@ -11,6 +10,14 @@ import { toast } from "sonner";
 
 export function meta() {
   return [{ title: "Register" }];
+}
+
+export async function loader({ context }: Route.LoaderArgs) {
+  if (context.isAuthenticated) {
+    return redirect(AUTHENTICATED_REDIRECT);
+  }
+
+  return {};
 }
 
 export default function SignUp() {
