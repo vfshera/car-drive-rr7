@@ -3128,6 +3128,18 @@ export function getAllCars() {
   }, [] as string[]);
 }
 
+export function getMakeModelObjects() {
+  return Object.keys(makeWithModels).reduce(
+    (acc, make) => {
+      return [
+        ...acc,
+        ...makeWithModels[make as keyof typeof makeWithModels].map((model) => ({ make, model })),
+      ];
+    },
+    [] as { make: string; model: string }[],
+  );
+}
+
 export function getRandomCar() {
   const cars = getAllCars();
 
