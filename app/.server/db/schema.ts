@@ -1,4 +1,5 @@
 import { timestampColumns } from "./utils";
+import { relations } from "drizzle-orm";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const cars = sqliteTable("cars", {
@@ -6,9 +7,16 @@ export const cars = sqliteTable("cars", {
   make: text("make").notNull(),
   model: text("model").notNull(),
   year: integer("year").notNull(),
-  price: integer("price").notNull(),
+  showLocation: text("show_location").notNull(),
+  userId: text("user_id")
+    .notNull()
+    .references(() => users.id),
   ...timestampColumns(),
 });
+
+export const carsRelations = relations(cars, ({ one }) => ({
+  user: one(users, { fields: [cars.userId], references: [users.id] }),
+}));
 
 /***
  *  Auth Table Schemas
@@ -22,11 +30,15 @@ export const users = sqliteTable("users", {
   ...timestampColumns(),
 });
 
+export const usersRelations = relations(users, ({ one, many }) => ({
+  accounts: one(accounts),
+  cars: many(cars),
+}));
+
 export const sessions = sqliteTable("sessions", {
   id: text("id").primaryKey(),
   expiresAt: integer("expires_at", { mode: "timestamp" }).notNull(),
   token: text("token").notNull().unique(),
-
   ipAddress: text("ip_address"),
   userAgent: text("user_agent"),
   userId: text("user_id")

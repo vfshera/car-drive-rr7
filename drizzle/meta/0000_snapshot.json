@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "b9911cf7-455f-43fe-b457-e8cb9c752b87",
+  "id": "b600d53c-71a6-4090-b056-c4b1d34983e0",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "accounts": {
@@ -152,9 +152,16 @@
           "notNull": true,
           "autoincrement": false
         },
-        "price": {
-          "name": "price",
-          "type": "integer",
+        "show_location": {
+          "name": "show_location",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
@@ -177,7 +184,21 @@
         }
       },
       "indexes": {},
-      "foreignKeys": {},
+      "foreignKeys": {
+        "cars_user_id_users_id_fk": {
+          "name": "cars_user_id_users_id_fk",
+          "tableFrom": "cars",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "checkConstraints": {}
