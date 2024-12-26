@@ -1,5 +1,6 @@
+import users from "./schema/users.table";
 import { sql } from "drizzle-orm";
-import { integer } from "drizzle-orm/sqlite-core";
+import { integer, text } from "drizzle-orm/sqlite-core";
 
 export function timestampColumns() {
   return {
@@ -10,5 +11,13 @@ export function timestampColumns() {
       .notNull()
       .default(sql`(unixepoch())`)
       .$onUpdateFn(() => sql`(unixepoch())`),
+  };
+}
+
+export function userIdColumn() {
+  return {
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id),
   };
 }
