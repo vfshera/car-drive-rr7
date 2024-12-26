@@ -1,4 +1,3 @@
-@import "/themify-icons.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -152,7 +151,7 @@ html,
 /* LOADER */
 .loader {
   .loading {
-    @apply bg-brand-2 w-full;
+    @apply w-full bg-brand-2;
     height: 5px;
     background: linear-gradient(90deg, #fca311, #fca311) center bottom/0 5px no-repeat;
     animation: loaderLoading 1.2s ease infinite;
@@ -176,10 +175,10 @@ html,
 
 .cardrive-file-upload-wrapper {
   .file-upload {
-    @apply min-h-150 md:min-h-300 flex w-full items-center justify-center rounded-md bg-white shadow;
+    @apply flex min-h-150 w-full items-center justify-center rounded-md bg-white shadow md:min-h-300;
 
     .browse-area {
-      @apply min-h-135 md:min-h-280 w-95/100 flex cursor-pointer items-center justify-center rounded-md border-2 border-dashed border-blue-500 bg-white hover:bg-gray-100;
+      @apply flex min-h-135 w-95/100 cursor-pointer items-center justify-center rounded-md border-2 border-dashed border-blue-500 bg-white hover:bg-gray-100 md:min-h-280;
 
       .info {
         @apply flex flex-col items-center justify-center;
@@ -321,7 +320,7 @@ html,
       @apply my-10 flex flex-col items-center gap-5 md:my-0 md:flex-row md:gap-8;
 
       li {
-        @apply hover:border-brand-2 border-b-2 border-transparent transition-all delay-100;
+        @apply border-b-2 border-transparent transition-all delay-100 hover:border-brand-2;
         a {
           @apply uppercase;
         }
@@ -332,7 +331,7 @@ html,
         margin-left: 0 !important;
 
         li {
-          @apply border-brand-2 hover:bg-brand-2 rounded-md border px-4 py-1.5 hover:border-transparent;
+          @apply rounded-md border border-brand-2 px-4 py-1.5 hover:border-transparent hover:bg-brand-2;
 
           a {
             @apply sm:font-semibold lg:font-bold;
@@ -372,7 +371,7 @@ html,
   }
 
   i.nav-toggle {
-    @apply text-brand-2 cursor-pointer text-3xl sm:hidden sm:text-xl;
+    @apply cursor-pointer text-3xl text-brand-2 sm:hidden sm:text-xl;
   }
 
   nav {
@@ -382,14 +381,14 @@ html,
       @apply flex items-center gap-8;
 
       li {
-        @apply hover:border-brand-2 border-b-2 border-transparent transition-all delay-100;
+        @apply border-b-2 border-transparent transition-all delay-100 hover:border-brand-2;
       }
 
       &.guest-routes {
         @apply ml-10 flex items-center gap-3;
 
         li {
-          @apply border-brand-2 hover:bg-brand-2 rounded-md border px-4 py-1.5 hover:border-transparent;
+          @apply rounded-md border border-brand-2 px-4 py-1.5 hover:border-transparent hover:bg-brand-2;
 
           a {
             @apply sm:font-semibold lg:font-bold;
@@ -413,7 +412,7 @@ html,
 
 .footer-wrapper {
   footer {
-    @apply text-brand-1 flex h-20 items-center justify-center text-center font-bold;
+    @apply flex h-20 items-center justify-center text-center font-bold text-brand-1;
   }
 }
 
@@ -427,7 +426,7 @@ html,
   @apply flex w-full flex-col items-center justify-center bg-white py-10;
 
   h1 {
-    @apply text-brand-1 text-3xl font-bold;
+    @apply text-3xl font-bold text-brand-1;
   }
 
   .about-content {
@@ -451,10 +450,10 @@ html,
       }
 
       .tech-stack {
-        @apply w-95/100 mt-10 flex flex-col items-center justify-center sm:w-2/3;
+        @apply mt-10 flex w-95/100 flex-col items-center justify-center sm:w-2/3;
 
         p {
-          @apply text-brand-1 text-lg font-semibold;
+          @apply text-lg font-semibold text-brand-1;
         }
 
         .stacks {
@@ -480,14 +479,14 @@ html,
   @apply flex w-full flex-col items-center justify-center;
 
   .is-sent {
-    @apply min-h-3/4vh flex flex-col items-center justify-center;
+    @apply flex min-h-3/4vh flex-col items-center justify-center;
 
     i {
       @apply mb-2 rounded-full border-4 border-green-600 p-10 text-7xl text-green-600;
     }
 
     h2 {
-      @apply text-brand-1 text-xl font-semibold;
+      @apply text-xl font-semibold text-brand-1;
     }
 
     p {
@@ -505,7 +504,7 @@ html,
       }
 
       button[type="submit"] {
-        @apply bg-brand-1 flex w-1/3 items-center justify-center py-4 font-bold text-white hover:rounded-xl;
+        @apply flex w-1/3 items-center justify-center bg-brand-1 py-4 font-bold text-white hover:rounded-xl;
       }
     }
   }
@@ -517,7 +516,7 @@ html,
   @apply flex flex-col items-center justify-center pt-20;
 
   h1 {
-    @apply text-brand-1 text-3xl font-bold;
+    @apply text-3xl font-bold text-brand-1;
   }
 
   form {
@@ -527,11 +526,11 @@ html,
       @apply flex items-center justify-between;
 
       button[type="submit"] {
-        @apply bg-brand-1 flex w-1/3 items-center justify-center py-4 font-bold text-white hover:rounded-xl;
+        @apply flex w-1/3 items-center justify-center bg-brand-1 py-4 font-bold text-white hover:rounded-xl;
       }
 
       button.social-login-btn {
-        @apply text-brand-1 hover:border-brand-1 flex items-center justify-center border bg-gray-200 px-4 py-4 font-bold sm:px-8;
+        @apply flex items-center justify-center border bg-gray-200 px-4 py-4 font-bold text-brand-1 hover:border-brand-1 sm:px-8;
 
         i {
           @apply ml-2;
@@ -541,10 +540,10 @@ html,
   }
 }
 .profile-page {
-  @apply min-h-app-mscreen sm:min-h-app-screen flex flex-col p-5 lg:p-10;
+  @apply flex min-h-app-mscreen flex-col p-5 sm:min-h-app-screen lg:p-10;
 
   h1 {
-    @apply text-brand-1 text-xl font-bold sm:text-3xl;
+    @apply text-xl font-bold text-brand-1 sm:text-3xl;
   }
 
   .update-info {
@@ -558,7 +557,7 @@ html,
       @apply my-3 flex flex-col sm:flex-row;
 
       .note {
-        @apply text-brand-2 bg-brand-1 rounded-md p-3 shadow-sm;
+        @apply rounded-md bg-brand-1 p-3 text-brand-2 shadow-sm;
 
         p {
           @apply text-base font-semibold;
@@ -577,11 +576,11 @@ html,
 
         .input-group {
           &.two-fields {
-            @apply sm:w-30/100 w-full lg:w-1/2;
+            @apply w-full sm:w-30/100 lg:w-1/2;
           }
 
           &.three-fields {
-            @apply sm:w-30/100 w-full lg:w-1/3;
+            @apply w-full sm:w-30/100 lg:w-1/3;
           }
 
           label {
@@ -608,7 +607,7 @@ html,
         @apply flex w-1/2 flex-col sm:w-full;
 
         .title {
-          @apply text-brand-1 text-base font-semibold sm:text-xl sm:font-bold;
+          @apply text-base font-semibold text-brand-1 sm:text-xl sm:font-bold;
         }
 
         .value {
@@ -625,14 +624,14 @@ html,
       @apply my-3 flex flex-col sm:my-0;
 
       h2 {
-        @apply text-brand-1 text-lg font-semibold sm:text-xl sm:font-bold;
+        @apply text-lg font-semibold text-brand-1 sm:text-xl sm:font-bold;
       }
 
       .social-account {
         @apply my-2 flex items-center;
 
         i {
-          @apply text-brand-1 mr-2 text-xl;
+          @apply mr-2 text-xl text-brand-1;
         }
 
         .brand {
@@ -647,10 +646,10 @@ html,
   @apply flex min-h-screen flex-col items-center justify-center;
 
   section.provider-buttons {
-    @apply w-95/100 flex flex-col items-center justify-center md:w-2/3 lg:w-1/3;
+    @apply flex w-95/100 flex-col items-center justify-center md:w-2/3 lg:w-1/3;
 
     button {
-      @apply bg-brand-1 flex w-3/5 items-center justify-center rounded-md py-4 text-white;
+      @apply flex w-3/5 items-center justify-center rounded-md bg-brand-1 py-4 text-white;
 
       span {
         @apply ml-2 flex items-center justify-center font-bold text-white;
@@ -666,26 +665,26 @@ html,
     }
 
     .note {
-      @apply text-brand-1 mt-4 text-center text-sm opacity-80;
+      @apply mt-4 text-center text-sm text-brand-1 opacity-80;
     }
   }
 }
 
 .login-resolve-page {
-  @apply min-h-1/2vh flex items-center justify-center;
+  @apply flex min-h-1/2vh items-center justify-center;
 
   h1 {
-    @apply text-brand-1 font-bold;
+    @apply font-bold text-brand-1;
   }
 }
 
 /* DASHBOARD PAGE */
 
 .dashboard-page {
-  @apply min-h-app-mscreen sm:min-h-app-screen p-5 lg:p-10;
+  @apply min-h-app-mscreen p-5 sm:min-h-app-screen lg:p-10;
 
   h1 {
-    @apply text-brand-1 text-base font-bold md:text-2xl lg:text-3xl;
+    @apply text-base font-bold text-brand-1 md:text-2xl lg:text-3xl;
   }
 
   section.dash-items {
@@ -696,7 +695,7 @@ html,
         @apply flex flex-col items-center justify-center rounded-md border border-gray-100 bg-white py-7 shadow sm:p-5 lg:p-10;
 
         i {
-          @apply text-brand-1 text-2xl font-bold lg:text-3xl;
+          @apply text-2xl font-bold text-brand-1 lg:text-3xl;
         }
 
         p {
@@ -728,15 +727,15 @@ section.car-list-wrapper {
     @apply flex items-center justify-between;
 
     h1 {
-      @apply text-brand-1 text-xl font-bold md:text-2xl lg:text-3xl;
+      @apply text-xl font-bold text-brand-1 md:text-2xl lg:text-3xl;
     }
 
     span {
-      @apply text-brand-1 text-base font-semibold lg:text-lg;
+      @apply text-base font-semibold text-brand-1 lg:text-lg;
     }
 
     a {
-      @apply text-brand-1 hover:text-brand-2 text-base font-bold transition-all delay-100 md:text-xl;
+      @apply text-base font-bold text-brand-1 transition-all delay-100 hover:text-brand-2 md:text-xl;
 
       i {
         @apply lg:hidden;
@@ -755,16 +754,16 @@ section.car-list-wrapper {
 
     a {
       .car-card {
-        @apply bg-brand-1 h-200 lg:h-300 cursor-pointer transition-all delay-100 ease-in-out hover:rounded-md hover:shadow-md;
+        @apply h-200 cursor-pointer bg-brand-1 transition-all delay-100 ease-in-out hover:rounded-md hover:shadow-md lg:h-300;
 
         .caption-wrapper {
           @apply flex h-full w-full justify-end;
 
           .caption {
-            @apply bg-brand-3 text-brand-1 flex h-1/5 w-1/2 flex-col self-end px-2 py-1 hover:rounded-tl lg:w-2/5 lg:justify-between lg:p-2;
+            @apply flex h-1/5 w-1/2 flex-col self-end bg-brand-3 px-2 py-1 text-brand-1 hover:rounded-tl lg:w-2/5 lg:justify-between lg:p-2;
 
             .title {
-              @apply border-brand-2 border-r-2;
+              @apply border-r-2 border-brand-2;
 
               h2 {
                 @apply text-base font-bold lg:text-xl;
@@ -803,7 +802,7 @@ section.car-list-wrapper {
     @apply mt-10 flex items-center justify-between;
 
     button {
-      @apply text-brand-1 hover:bg-brand-1 hover:text-brand-3 bg-gray-200 px-4 py-1 text-sm font-semibold shadow sm:px-5 sm:text-base lg:px-10 lg:py-2;
+      @apply bg-gray-200 px-4 py-1 text-sm font-semibold text-brand-1 shadow hover:bg-brand-1 hover:text-brand-3 sm:px-5 sm:text-base lg:px-10 lg:py-2;
 
       &.disabled {
         @apply bg-gray-200 text-gray-400;
@@ -819,19 +818,19 @@ section.car-list-wrapper {
       @apply grid grid-cols-6 gap-3 sm:grid-cols-10 lg:inline-block lg:grid-cols-none lg:gap-0;
 
       button {
-        @apply bg-brand-1 text-brand-3 hover:text-brand-1 mx-1 px-4 py-1 text-sm shadow hover:bg-gray-200 sm:text-base sm:font-semibold lg:px-5 lg:py-2;
+        @apply mx-1 bg-brand-1 px-4 py-1 text-sm text-brand-3 shadow hover:bg-gray-200 hover:text-brand-1 sm:text-base sm:font-semibold lg:px-5 lg:py-2;
       }
 
       button.current-page {
-        @apply bg-brand-3 text-brand-1 border-brand-2 hover:bg-brand-1 hover:text-brand-2 mx-1 border-t-2 px-4 py-1 text-sm shadow sm:text-base sm:font-bold lg:px-5 lg:py-2;
+        @apply mx-1 border-t-2 border-brand-2 bg-brand-3 px-4 py-1 text-sm text-brand-1 shadow hover:bg-brand-1 hover:text-brand-2 sm:text-base sm:font-bold lg:px-5 lg:py-2;
       }
 
       button.peak-page {
-        @apply bg-brand-3 border-brand-1 text-brand-1 hover:bg-brand-1 hover:text-brand-2 mx-1 border-2 px-4 py-1 text-sm shadow sm:text-base sm:font-bold lg:px-5 lg:py-2;
+        @apply mx-1 border-2 border-brand-1 bg-brand-3 px-4 py-1 text-sm text-brand-1 shadow hover:bg-brand-1 hover:text-brand-2 sm:text-base sm:font-bold lg:px-5 lg:py-2;
       }
 
       button.showmore.disabled {
-        @apply text-brand-1 bg-gray-100 px-2 py-1 text-sm shadow-none sm:text-base lg:px-3 lg:py-2;
+        @apply bg-gray-100 px-2 py-1 text-sm text-brand-1 shadow-none sm:text-base lg:px-3 lg:py-2;
       }
     }
   }
@@ -846,12 +845,12 @@ section.car-list-wrapper {
     @apply my-3 flex flex-col sm:mt-10;
 
     .title {
-      @apply text-brand-1 mb-3 flex items-center;
+      @apply mb-3 flex items-center text-brand-1;
       a {
         @apply text-2xl font-bold;
       }
       span {
-        @apply text-brand-2 px-2 text-2xl;
+        @apply px-2 text-2xl text-brand-2;
       }
 
       h2 {
@@ -864,15 +863,15 @@ section.car-list-wrapper {
     }
 
     .details {
-      @apply sm:h-3/4vh flex flex-col lg:flex-row lg:justify-between;
+      @apply flex flex-col sm:h-3/4vh lg:flex-row lg:justify-between;
       /* height: 70vh; */
 
       .car-photo {
-        @apply h-300 lg:h-3/4vh w-full lg:w-4/5;
+        @apply h-300 w-full lg:h-3/4vh lg:w-4/5;
       }
 
       .description {
-        @apply bg-brand-3 flex w-full flex-col p-0 sm:p-3 lg:w-1/5;
+        @apply flex w-full flex-col bg-brand-3 p-0 sm:p-3 lg:w-1/5;
 
         .information {
           @apply flex flex-row justify-between lg:flex-col;
@@ -903,15 +902,15 @@ section.car-list-wrapper {
 /* DASBOARD */
 .dash-wrapper {
   .dash {
-    @apply min-h-app-mscreen sm:min-h-app-screen sm:h-appFull flex justify-between sm:min-h-0;
+    @apply flex min-h-app-mscreen justify-between sm:h-appFull sm:min-h-0 sm:min-h-app-screen;
 
     /* height: calc(100vh - 4rem); */
 
     aside.sidebar {
-      @apply border-brand-1 fixed left-0 z-10 hidden h-full w-2/12 border-r md:block;
+      @apply fixed left-0 z-10 hidden h-full w-2/12 border-r border-brand-1 md:block;
 
       .countd {
-        @apply text-brand-1 border-brand-1 border-b p-5 text-xs font-semibold lg:p-10 lg:text-sm;
+        @apply border-b border-brand-1 p-5 text-xs font-semibold text-brand-1 lg:p-10 lg:text-sm;
 
         i {
           @apply mr-1;
@@ -923,14 +922,14 @@ section.car-list-wrapper {
 
         li {
           a {
-            @apply text-brand-1 text-base font-bold lg:text-xl;
+            @apply text-base font-bold text-brand-1 lg:text-xl;
           }
         }
       }
     }
 
     section.admin-content {
-      @apply bg-brand-3 ml-auto h-full w-full md:w-10/12;
+      @apply ml-auto h-full w-full bg-brand-3 md:w-10/12;
     }
   }
 }
@@ -939,16 +938,16 @@ section.car-list-wrapper {
 section.admin-content {
   /* NEW CHAT */
   .new-message {
-    @apply min-h-app-mscreen sm:min-h-app-screen p-3 sm:p-10;
+    @apply min-h-app-mscreen p-3 sm:min-h-app-screen sm:p-10;
 
     h1 {
-      @apply text-brand-1 text-xl font-bold md:text-2xl lg:text-3xl;
+      @apply text-xl font-bold text-brand-1 md:text-2xl lg:text-3xl;
     }
 
     .create-message-form {
       form {
         button {
-          @apply bg-brand-1 flex w-2/5 items-center justify-center py-4 font-bold text-white hover:rounded-xl;
+          @apply flex w-2/5 items-center justify-center bg-brand-1 py-4 font-bold text-white hover:rounded-xl;
         }
 
         .form-inputs {
@@ -984,7 +983,7 @@ section.admin-content {
   /* CHATS */
 
   .no-chats {
-    @apply min-h-app-mscreen sm:min-h-app-screen flex flex-col items-center justify-center;
+    @apply flex min-h-app-mscreen flex-col items-center justify-center sm:min-h-app-screen;
 
     p {
       @apply mb-2 text-xl;
@@ -995,7 +994,7 @@ section.admin-content {
     }
 
     button.start-messaging {
-      @apply bg-brand-1 rounded-md px-6 py-2 text-white;
+      @apply rounded-md bg-brand-1 px-6 py-2 text-white;
     }
   }
 
@@ -1004,23 +1003,23 @@ section.admin-content {
       @apply mt-5 px-3 sm:mt-3 sm:px-10;
 
       h1 {
-        @apply text-brand-1 text-2xl font-bold lg:text-3xl;
+        @apply text-2xl font-bold text-brand-1 lg:text-3xl;
       }
 
       &.chats-home {
         @apply flex items-center justify-between;
 
         button {
-          @apply bg-brand-1 rounded-md px-4 py-2 text-white sm:px-6;
+          @apply rounded-md bg-brand-1 px-4 py-2 text-white sm:px-6;
         }
       }
     }
 
     .chat-user-wrapper {
-      @apply min-h-app-mscreen sm:min-h-app-screen flex;
+      @apply flex min-h-app-mscreen sm:min-h-app-screen;
 
       .recepient-profile {
-        @apply min-h-app-mscreen sm:min-h-app-screen hidden bg-white shadow-lg sm:block sm:w-1/4;
+        @apply hidden min-h-app-mscreen bg-white shadow-lg sm:block sm:min-h-app-screen sm:w-1/4;
 
         .profile-pic {
           @apply relative h-2/5 border-b border-gray-100;
@@ -1037,11 +1036,11 @@ section.admin-content {
           @apply flex justify-between px-4 py-3;
 
           h3 {
-            @apply text-brand-1 inline-block text-base font-bold md:text-lg lg:text-xl;
+            @apply inline-block text-base font-bold text-brand-1 md:text-lg lg:text-xl;
           }
 
           span {
-            @apply text-brand-1 text-sm md:text-base lg:text-lg;
+            @apply text-sm text-brand-1 md:text-base lg:text-lg;
           }
         }
 
@@ -1049,7 +1048,7 @@ section.admin-content {
           @apply flex flex-col;
 
           h3 {
-            @apply text-brand-1 text-base font-bold md:text-lg lg:text-xl;
+            @apply text-base font-bold text-brand-1 md:text-lg lg:text-xl;
           }
 
           .photos {
@@ -1067,7 +1066,7 @@ section.admin-content {
       }
 
       .user-chats {
-        @apply bg-brand-3 flex w-full flex-col sm:w-3/4;
+        @apply flex w-full flex-col bg-brand-3 sm:w-3/4;
 
         .chat-head {
           @apply mt-0 bg-white px-4 py-1;
@@ -1076,7 +1075,7 @@ section.admin-content {
             @apply flex items-center;
 
             h1 {
-              @apply text-brand-1 inline text-lg font-bold md:text-xl lg:text-2xl;
+              @apply inline text-lg font-bold text-brand-1 md:text-xl lg:text-2xl;
             }
 
             .status {
@@ -1102,18 +1101,18 @@ section.admin-content {
         }
 
         .message-input {
-          @apply bg-brand-3 mt-auto flex items-center px-4 pb-2 shadow-sm sm:pb-4;
+          @apply mt-auto flex items-center bg-brand-3 px-4 pb-2 shadow-sm sm:pb-4;
 
           input {
             @apply w-4/5 rounded-bl-md rounded-tl-md bg-white p-2 text-gray-700 sm:w-11/12;
           }
 
           button {
-            @apply bg-brand-1 w-1/5 rounded-br-md rounded-tr-md py-2 font-bold text-white sm:w-1/12;
+            @apply w-1/5 rounded-br-md rounded-tr-md bg-brand-1 py-2 font-bold text-white sm:w-1/12;
           }
         }
         .chats {
-          @apply bg-brand-3 h-4/5vh md:h-3/4vh overflow-hidden overflow-y-scroll;
+          @apply h-4/5vh overflow-hidden overflow-y-scroll bg-brand-3 md:h-3/4vh;
 
           .received,
           .sent {
@@ -1141,13 +1140,13 @@ section.admin-content {
 
           .received {
             .message-wrapper {
-              @apply text-brand-1 mr-auto rounded-bl-none bg-white;
+              @apply mr-auto rounded-bl-none bg-white text-brand-1;
 
               .sender {
                 @apply flex justify-between;
 
                 h2 {
-                  @apply text-brand-1 font-bold;
+                  @apply font-bold text-brand-1;
                 }
 
                 span {
@@ -1163,13 +1162,13 @@ section.admin-content {
 
           .sent {
             .message-wrapper {
-              @apply bg-brand-1 text-brand-3 ml-auto cursor-pointer rounded-br-none;
+              @apply ml-auto cursor-pointer rounded-br-none bg-brand-1 text-brand-3;
 
               .sender {
                 @apply flex justify-between;
 
                 h2 {
-                  @apply text-brand-3 font-bold;
+                  @apply font-bold text-brand-3;
                 }
 
                 span {
@@ -1198,7 +1197,7 @@ section.admin-content {
     }
 
     .chats {
-      @apply bg-brand-3 h-4/5vh flex flex-col overflow-hidden overflow-y-scroll py-3 sm:py-2;
+      @apply flex h-4/5vh flex-col overflow-hidden overflow-y-scroll bg-brand-3 py-3 sm:py-2;
 
       a {
         &:first-child {
@@ -1213,7 +1212,7 @@ section.admin-content {
           .profile {
             @apply flex items-center;
             .avatar {
-              @apply bg-brand-1 text-brand-3 flex h-14 w-14 items-center justify-center rounded-full font-extrabold;
+              @apply flex h-14 w-14 items-center justify-center rounded-full bg-brand-1 font-extrabold text-brand-3;
             }
           }
 
@@ -1224,7 +1223,7 @@ section.admin-content {
               @apply flex justify-between;
 
               h2 {
-                @apply text-brand-1 text-base font-bold;
+                @apply text-base font-bold text-brand-1;
               }
 
               span {
@@ -1248,7 +1247,7 @@ section.admin-content {
     @apply relative right-0 top-0 w-full sm:-top-10;
 
     .search-drawer {
-      @apply min-h-app-mscreen sm:min-h-app-screen absolute right-0 top-0 z-20 ml-0 flex w-full flex-col items-center shadow sm:ml-auto sm:w-2/3 xl:w-1/3;
+      @apply absolute right-0 top-0 z-20 ml-0 flex min-h-app-mscreen w-full flex-col items-center shadow sm:ml-auto sm:min-h-app-screen sm:w-2/3 xl:w-1/3;
       backdrop-filter: blur(25px) saturate(200%);
       background-color: rgba(236, 236, 236, 0.9);
 
@@ -1256,14 +1255,14 @@ section.admin-content {
         @apply absolute top-5 z-50 flex w-full flex-col items-center justify-center;
 
         h1 {
-          @apply text-brand-1 text-xl font-bold;
+          @apply text-xl font-bold text-brand-1;
         }
 
         .search-box {
           @apply mt-3 flex h-8 w-4/5 items-center;
 
           input {
-            @apply focus:border-brand-1 text-brand-1 w-full rounded-md border border-gray-500 px-3 py-1.5 text-center text-base;
+            @apply w-full rounded-md border border-gray-500 px-3 py-1.5 text-center text-base text-brand-1 focus:border-brand-1;
           }
         }
 
@@ -1273,7 +1272,7 @@ section.admin-content {
           max-height: 70vh;
 
           .search-result {
-            @apply hover:text-brand-1 my-1 w-full cursor-pointer bg-gray-100 p-2 text-sm text-gray-600 hover:bg-gray-200;
+            @apply my-1 w-full cursor-pointer bg-gray-100 p-2 text-sm text-gray-600 hover:bg-gray-200 hover:text-brand-1;
           }
         }
 
@@ -1339,7 +1338,7 @@ section.admin-content {
               height: 80px;
 
               i {
-                @apply text-brand-1 text-2xl font-bold transition-all delay-100;
+                @apply text-2xl font-bold text-brand-1 transition-all delay-100;
               }
 
               &:hover {
@@ -1390,7 +1389,7 @@ section.admin-content {
     background: rgba(#cccccc, 0.9);
 
     .map-overlay {
-      @apply text-brand-1 absolute right-0 top-0 z-40 bg-white shadow;
+      @apply absolute right-0 top-0 z-40 bg-white text-brand-1 shadow;
       width: 80vw;
       height: 100vw;
 
@@ -1420,7 +1419,7 @@ section.admin-content {
         @apply flex flex-col items-center justify-center pt-5;
 
         h1 {
-          @apply text-brand-1 text-3xl font-bold;
+          @apply text-3xl font-bold text-brand-1;
         }
 
         form {
@@ -1465,7 +1464,7 @@ section.admin-content {
             @apply flex items-center justify-between;
 
             button[type="submit"] {
-              @apply bg-brand-1 mr-5 flex w-1/2 items-center justify-center py-4 font-bold text-white hover:rounded-xl;
+              @apply mr-5 flex w-1/2 items-center justify-center bg-brand-1 py-4 font-bold text-white hover:rounded-xl;
             }
 
             button.cancelBtn {
@@ -1480,15 +1479,15 @@ section.admin-content {
       @apply flex items-center justify-between;
 
       h1 {
-        @apply text-brand-1 text-base font-bold md:text-lg lg:text-xl;
+        @apply text-base font-bold text-brand-1 md:text-lg lg:text-xl;
       }
 
       span {
-        @apply text-brand-1 text-sm font-semibold lg:text-base;
+        @apply text-sm font-semibold text-brand-1 lg:text-base;
       }
 
       a {
-        @apply text-brand-1 hover:text-brand-2 text-sm font-bold transition-all delay-100 md:text-base;
+        @apply text-sm font-bold text-brand-1 transition-all delay-100 hover:text-brand-2 md:text-base;
 
         i {
           @apply lg:hidden;
@@ -1507,7 +1506,7 @@ section.admin-content {
 
       a {
         .car-card {
-          @apply bg-brand-1 h-200 md:h-150 lg:h-200 cursor-pointer;
+          @apply h-200 cursor-pointer bg-brand-1 md:h-150 lg:h-200;
 
           .caption-wrapper {
             @apply flex h-full w-full justify-end;
@@ -1516,7 +1515,7 @@ section.admin-content {
               @apply flex h-1/5 w-1/2 flex-col self-end px-2 py-1 sm:h-1/4 lg:w-2/5 lg:justify-between lg:p-2;
 
               .title {
-                @apply border-brand-2 border-r-2;
+                @apply border-r-2 border-brand-2;
 
                 h2 {
                   @apply text-sm font-bold lg:text-base;
@@ -1551,7 +1550,7 @@ section.admin-content {
       }
 
       .car-card.skeleton {
-        @apply min-h-100 md:min-h-150 lg:min-h-200 cursor-pointer bg-gray-300;
+        @apply min-h-100 cursor-pointer bg-gray-300 md:min-h-150 lg:min-h-200;
 
         .caption-wrapper {
           @apply flex h-full w-full justify-end;
