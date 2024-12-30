@@ -7,3 +7,5 @@ export { default as sessions } from "./sessions.table";
 export { default as cars, carsRelations } from "./cars.table";
 
 export { default as verifications } from "./verifications.table";
+
+export { default as carPhotos, carPhotosRelations } from "./car-photos.table";
