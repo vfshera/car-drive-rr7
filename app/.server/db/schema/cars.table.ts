@@ -1,5 +1,6 @@
 import type { WithOmit } from "../types";
 import { timestampColumns, userIdColumn } from "../utils";
+import carPhotos from "./car-photos.table";
 import users from "./users.table";
 import { relations } from "drizzle-orm";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
@@ -14,8 +15,9 @@ const cars = sqliteTable("cars", {
   ...timestampColumns(),
 });
 
-export const carsRelations = relations(cars, ({ one }) => ({
+export const carsRelations = relations(cars, ({ one, many }) => ({
   user: one(users, { fields: [cars.userId], references: [users.id] }),
+  photos: many(carPhotos),
 }));
 
 export type SelectCar = typeof cars.$inferSelect;
