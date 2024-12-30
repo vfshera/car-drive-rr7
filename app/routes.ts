@@ -3,5 +3,11 @@ import { remixRoutesOptionAdapter } from "@react-router/remix-routes-option-adap
 import { flatRoutes } from "remix-flat-routes";
 
 export default remixRoutesOptionAdapter((defineRoutes) => {
-  return flatRoutes("routes", defineRoutes);
+  const routes = flatRoutes("routes", defineRoutes);
+
+  if (import.meta.env.DEV) {
+    console.table(Object.values(routes).map(({ caseSensitive, id, ...v }) => v));
+  }
+
+  return routes;
 }) satisfies RouteConfig;

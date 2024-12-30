@@ -5,7 +5,7 @@ export const APP_DESCRIPTION = "";
 /**
  * Where to redirect the user if they are not authenticated
  */
-export const UNAUTHENTICATED_REDIRECT = "/signin";
+export const UNAUTHENTICATED_REDIRECT = "/login";
 
 /**
  * Where to redirect the user after they are successfully authenticated
