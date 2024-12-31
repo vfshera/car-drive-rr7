@@ -1,6 +1,8 @@
+import { PAGINATION_SIZE } from "~/constants/database";
+import type { Paginated } from "~/types";
 import users from "./schema/users.table";
 import { sql } from "drizzle-orm";
-import { integer, text } from "drizzle-orm/sqlite-core";
+import { type SQLiteSelect, integer, text } from "drizzle-orm/sqlite-core";
 
 export function timestampColumns() {
   return {
@@ -19,5 +21,40 @@ export function userIdColumn() {
     userId: text("user_id")
       .notNull()
       .references(() => users.id),
+  };
+}
+
+export function primaryKeyAutoIncrementIDColumn() {
+  return {
+    id: integer("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
+  };
+}
+
+export function withPagination<T extends SQLiteSelect>(
+  qb: T,
+  page: number = 1,
+  pageSize: number = PAGINATION_SIZE,
+) {
+  return qb.limit(pageSize).offset((page - 1) * pageSize);
+}
+
+export function toPaginated<Data>(
+  data: Data[],
+  currentPage: number,
+  total: number,
+  perPage: number,
+): Paginated<Data> {
+  const totalPages = Math.ceil(total / perPage);
+
+  return {
+    data,
+    pagination: {
+      currentPage,
+      lastPage: totalPages,
+      total,
+      perPage,
+      next: currentPage < totalPages ? currentPage + 1 : null,
+      prev: currentPage > 1 ? currentPage - 1 : null,
+    },
   };
 }
