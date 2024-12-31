@@ -1,6 +1,18 @@
+import { PAGINATION_SIZE } from "~/constants/database";
 import { db } from "..";
 import cars from "../schema/cars.table";
-import { eq } from "drizzle-orm";
+import { toPaginated, withPagination } from "../utils";
+import { desc, eq, sql } from "drizzle-orm";
+
+export async function loadCars(page = 1, pageSize = PAGINATION_SIZE) {
+  const query = db.select().from(cars).orderBy(desc(cars.createdAt)).$dynamic();
+
+  const [totalCars] = await db.select({ count: sql<number>`count(*)` }).from(cars);
+
+  const data = await withPagination(query, page, pageSize);
+
+  return toPaginated(data, page, totalCars.count, pageSize);
+}
 
 /**
  * Finds a car by its ID.
