@@ -41,18 +41,19 @@ export function withPagination<T extends SQLiteSelect>(
 export function toPaginated<Data>(
   data: Data[],
   currentPage: number,
-  total: number,
+  totalItems: number,
   perPage: number,
 ): Paginated<Data> {
-  const totalPages = Math.ceil(total / perPage);
+  const totalPages = Math.ceil(totalItems / perPage);
 
   return {
     data,
     pagination: {
       currentPage,
       lastPage: totalPages,
-      total,
+      totalItems,
       perPage,
+      totalPages,
       next: currentPage < totalPages ? currentPage + 1 : null,
       prev: currentPage > 1 ? currentPage - 1 : null,
     },
