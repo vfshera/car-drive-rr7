@@ -19,13 +19,14 @@ export type PaginationProps = Paginated<unknown>["pagination"] & {
 
 export default function usePagination({
   currentPage,
-  pagesToShow = 5,
   lastPage,
   next,
   prev,
   totalPages,
 }: PaginationProps) {
   const location = useLocation();
+
+  const pagesToShow = 5; // TODO - make this dynamic
 
   const isFirstPage = currentPage === 1;
 
@@ -60,6 +61,10 @@ export default function usePagination({
     const pages: { page: number; url: string }[] = [];
 
     for (let i = start; i <= end; i++) {
+      if (pages.some((page) => page.page === i)) {
+        continue;
+      }
+
       pages.push({
         page: i,
         url: generateUrl(i, url)!,
