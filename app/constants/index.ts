@@ -2,6 +2,8 @@ export const APP_NAME = "Car Drive";
 
 export const APP_DESCRIPTION = "";
 
+export const APP_URL = import.meta.env.VITE_APP_URL;
+
 /**
  * Where to redirect the user if they are not authenticated
  */
