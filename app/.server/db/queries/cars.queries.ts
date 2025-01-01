@@ -14,6 +14,21 @@ export async function loadCars(page = 1, pageSize = PAGINATION_SIZE) {
   return toPaginated(data, page, totalCars.count, pageSize);
 }
 
+export async function loadMyCars(userId: string, page = 1, pageSize = PAGINATION_SIZE) {
+  const query = db
+    .select()
+    .from(cars)
+    .where(eq(cars.userId, userId))
+    .orderBy(desc(cars.createdAt))
+    .$dynamic();
+
+  const [totalCars] = await db.select({ count: sql<number>`count(*)` }).from(cars);
+
+  const data = await withPagination(query, page, pageSize);
+
+  return toPaginated(data, page, totalCars.count, pageSize);
+}
+
 /**
  * Finds a car by its ID.
  *
