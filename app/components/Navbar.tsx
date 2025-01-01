@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
+import { authClient } from "~/lib/auth.client";
 import logo from "~/assets/images/cardrive.png";
+import { SIGNOUT_REDIRECT } from "~/constants";
 import type { User } from "better-auth";
 
 type NavbarProps = {
@@ -8,19 +10,13 @@ type NavbarProps = {
 };
 
 export default function Navbar({ user }: NavbarProps) {
-  const location = useLocation();
-  // const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const [sessionTimer, setTimer] = useState(0);
+  const location = useLocation();
 
   const [menuOpen, setMenuOpen] = useState(false);
 
   const [toggleClasses, setToggleClasses] = useState("ti-menu");
-
-  // const authUser = useSelector((state) => state.authUser);
-  // const { auth, loggedInUser, loading } = authUser;
-
-  // const userTime = useSelector((state) => state.userTime);
 
   useEffect(() => {
     if (menuOpen) {
@@ -29,12 +25,6 @@ export default function Navbar({ user }: NavbarProps) {
       setToggleClasses("ti-menu");
     }
   }, [menuOpen]);
-
-  const logout = (e: React.MouseEvent) => {
-    e.preventDefault();
-
-    // dispatch(logoutUser());
-  };
 
   return (
     <div
@@ -56,27 +46,15 @@ export default function Navbar({ user }: NavbarProps) {
       ></i>
       <nav>
         <ul className="link-list">
-          <li
-            onClick={(e) => {
-              setMenuOpen(false);
-            }}
-          >
+          <li>
             <Link to="/"> Home </Link>
           </li>
 
-          <li
-            onClick={(e) => {
-              setMenuOpen(false);
-            }}
-          >
+          <li>
             <Link to="/contact"> Contact </Link>
           </li>
 
-          <li
-            onClick={(e) => {
-              setMenuOpen(false);
-            }}
-          >
+          <li>
             <Link to="/about"> About</Link>
           </li>
         </ul>
@@ -84,57 +62,40 @@ export default function Navbar({ user }: NavbarProps) {
         {user ? (
           <>
             <ul className="link-list auth-routes">
-              <li
-                className="admin-nav-link"
-                onClick={(e) => {
-                  setMenuOpen(false);
-                }}
-              >
+              <li className="admin-nav-link">
                 <Link to="/dashboard">Dashboard</Link>
               </li>
 
-              <li
-                className="admin-nav-link"
-                onClick={(e) => {
-                  setMenuOpen(false);
-                }}
-              >
+              <li className="admin-nav-link">
                 <Link to="/dashboard/cars">Cars</Link>
               </li>
 
-              <li
-                className="admin-nav-link"
-                onClick={(e) => {
-                  setMenuOpen(false);
-                }}
-              >
+              <li className="admin-nav-link">
                 <Link to="/dashboard/mycars">My Cars</Link>
               </li>
 
-              <li
-                className="admin-nav-link"
-                onClick={(e) => {
-                  setMenuOpen(false);
-                }}
-              >
+              <li className="admin-nav-link">
                 <Link to="/dashboard/chats">Chats</Link>
               </li>
 
-              <span
-                onClick={(e) => {
-                  setMenuOpen(false);
-                }}
-              >
-                {" "}
-                <Link to="/dashboard/profile">{user.name}</Link>
+              <span>
+                <Link to="/dashboard/profile">Profile</Link>
               </span>
 
-              <li
-                onClick={(e) => {
-                  setMenuOpen(false);
-                }}
-              >
-                <button onClick={logout}> Logout</button>
+              <li>
+                <button
+                  onClick={async () => {
+                    await authClient.signOut({
+                      fetchOptions: {
+                        onSuccess: () => {
+                          navigate(SIGNOUT_REDIRECT);
+                        },
+                      },
+                    });
+                  }}
+                >
+                  Logout
+                </button>
               </li>
             </ul>
           </>
