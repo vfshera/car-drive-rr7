@@ -22,11 +22,11 @@ export default function Pagination(props: PaginationProps) {
       <section className="page-numbers">
         {visiblePages[0].page != 1 && (
           <>
-            <Link to={pageLinks.firstPageUrl} className="peak-page">
+            <Link to={pageLinks.firstPageUrl} className="peak-page" aria-label="First Page">
               First
             </Link>
             {groupUrls.prev && (
-              <Link to={groupUrls.prev.url} className="showmore">
+              <Link to={groupUrls.prev.url} className="showmore" aria-label="Show Previous Group">
                 [...]
               </Link>
             )}
@@ -37,6 +37,9 @@ export default function Pagination(props: PaginationProps) {
           <Link
             to={pageLink.url}
             className={cn(pageLink.page === props.currentPage && "current-page")}
+            {...(pageLink.page === props.currentPage
+              ? { "aria-current": "page" }
+              : { "aria-label": `Go to Page ${pageLink.page}` })}
             key={index}
           >
             {pageLink.page}
@@ -45,12 +48,12 @@ export default function Pagination(props: PaginationProps) {
         {!isLastPage && (
           <>
             {groupUrls.next && (
-              <Link to={groupUrls.next.url} className="showmore">
+              <Link to={groupUrls.next.url} className="showmore" aria-label="Show Next Group">
                 [...]
               </Link>
             )}
 
-            <Link to={pageLinks.lastPageUrl} className="peak-page">
+            <Link to={pageLinks.lastPageUrl} className="peak-page" aria-label="Last Page">
               Last
             </Link>
           </>
