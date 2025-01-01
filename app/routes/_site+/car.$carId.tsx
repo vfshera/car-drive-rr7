@@ -2,7 +2,7 @@ import type { Route } from "./+types/car.$carId";
 import { useMemo, useState } from "react";
 import { Link, data, isRouteErrorResponse, useRouteError } from "react-router";
 import { getCarById } from "~/.server/db/queries/cars.queries";
-import { getHomeImage } from "~/data/cars";
+import { getHomeImage } from "~/data/cars/images";
 
 export async function loader({ params }: Route.LoaderArgs) {
   const car = await getCarById(Number(params.carId));

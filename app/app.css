@@ -801,7 +801,7 @@ section.car-list-wrapper {
   .pagination {
     @apply mt-10 flex items-center justify-between;
 
-    button {
+    a {
       @apply bg-gray-200 px-4 py-1 text-sm font-semibold text-brand-1 shadow hover:bg-brand-1 hover:text-brand-3 sm:px-5 sm:text-base lg:px-10 lg:py-2;
 
       &.disabled {
@@ -817,19 +817,19 @@ section.car-list-wrapper {
     .page-numbers {
       @apply grid grid-cols-6 gap-3 sm:grid-cols-10 lg:inline-block lg:grid-cols-none lg:gap-0;
 
-      button {
+      a {
         @apply mx-1 bg-brand-1 px-4 py-1 text-sm text-brand-3 shadow hover:bg-gray-200 hover:text-brand-1 sm:text-base sm:font-semibold lg:px-5 lg:py-2;
       }
 
-      button.current-page {
+      a.current-page {
         @apply mx-1 border-t-2 border-brand-2 bg-brand-3 px-4 py-1 text-sm text-brand-1 shadow hover:bg-brand-1 hover:text-brand-2 sm:text-base sm:font-bold lg:px-5 lg:py-2;
       }
 
-      button.peak-page {
+      a.peak-page {
         @apply mx-1 border-2 border-brand-1 bg-brand-3 px-4 py-1 text-sm text-brand-1 shadow hover:bg-brand-1 hover:text-brand-2 sm:text-base sm:font-bold lg:px-5 lg:py-2;
       }
 
-      button.showmore.disabled {
+      a.showmore {
         @apply bg-gray-100 px-2 py-1 text-sm text-brand-1 shadow-none sm:text-base lg:px-3 lg:py-2;
       }
     }
