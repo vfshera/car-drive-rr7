@@ -1,1 +1,1 @@
-export type WithOmit<T> = Omit<T, "id" | "createdAt" | "updatedAt">;
+export type WithOmit<T, K extends keyof T = never> = Omit<T, "id" | "createdAt" | "updatedAt" | K>;
