@@ -1,12 +1,12 @@
 import type { WithOmit } from "../types";
-import { timestampColumns, userIdColumn } from "../utils";
+import { primaryKeyAutoIncrementIDColumn, timestampColumns, userIdColumn } from "../utils";
 import carPhotos from "./car-photos.table";
 import users from "./users.table";
 import { relations } from "drizzle-orm";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 const cars = sqliteTable("cars", {
-  id: integer("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
+  ...primaryKeyAutoIncrementIDColumn(),
   make: text("make").notNull(),
   model: text("model").notNull(),
   year: integer("year").notNull(),
