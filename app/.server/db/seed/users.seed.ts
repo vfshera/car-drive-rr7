@@ -12,6 +12,14 @@ export default async function seedUsers() {
       },
     });
 
+    await auth.api.signUpEmail({
+      body: {
+        name: "Admin2",
+        email: "admin2@cardrive.com",
+        password: "1234567890",
+      },
+    });
+
     console.log(kleur.green("🌱 User seeded successfully!"));
   } catch (error) {
     if (error instanceof APIError) {

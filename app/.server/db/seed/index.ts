@@ -1,6 +1,7 @@
 import { sqlite } from "..";
 import * as schema from "../schema";
 import seedCars from "./cars.seed";
+import seedChats from "./chats.seed";
 import seedUsers from "./users.seed";
 import { drizzle } from "drizzle-orm/better-sqlite3";
 import { reset } from "drizzle-seed";
@@ -15,6 +16,7 @@ async function startSeeding() {
 
   await seedUsers();
   await seedCars();
+  await seedChats();
 }
 
 startSeeding();
