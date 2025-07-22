@@ -66,7 +66,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 
   return (
     <main className="grid h-screen place-items-center bg-red-50 p-4 pt-16 text-red-600">
-      <div className="text-center">
+      <div className="overflow-x-hidden text-center">
         <h1 className="text-3xl font-bold">{message}</h1>
         <p>{details}</p>
         {stack && (

@@ -76,7 +76,7 @@ export default function SignUp() {
         </div>
 
         <div className="form-btns">
-          <button type="submit" disabled={isSubmitting} className="!w-full">
+          <button type="submit" disabled={isSubmitting} className="w-full!">
             Register
           </button>
         </div>

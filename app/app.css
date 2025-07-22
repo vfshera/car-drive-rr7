@@ -1,16 +1,137 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-html,
-body {
-  @apply m-0 bg-white p-0;
-  box-sizing: border-box;
-  --scrollbarBG: #ccc;
-  --thumbBG: #14213d;
+@plugin 'tailwindcss-animate';
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-inter:
+    Inter, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --color-brand-1: #14213d;
+  --color-brand-2: #fca311;
+  --color-brand-3: #e5e5e5;
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --color-sidebar: hsl(var(--sidebar-background));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --spacing-5\/100: 5%;
+  --spacing-10\/100: 10%;
+  --spacing-15\/100: 15%;
+  --spacing-20\/100: 20%;
+  --spacing-22\/100: 22%;
+  --spacing-30\/100: 30%;
+  --spacing-35\/100: 35%;
+  --spacing-45\/100: 45%;
+  --spacing-55\/100: 55%;
+  --spacing-65\/100: 65%;
+  --spacing-75\/100: 75%;
+  --spacing-85\/100: 85%;
+  --spacing-95\/100: 95%;
+
+  --min-height-0: 0;
+  --min-height-100: 100px;
+  --min-height-135: 135px;
+  --min-height-150: 150px;
+  --min-height-200: 200px;
+  --min-height-280: 280px;
+  --min-height-300: 300px;
+  --min-height-400: 400px;
+  --min-height-1\/4vh: 25vh;
+  --min-height-1\/2vh: 50vh;
+  --min-height-2\/3vh: 60vh;
+  --min-height-3\/4vh: 75vh;
+  --min-height-4\/5vh: 80vh;
+  --min-height-app-screen: calc(100vh - 4rem);
+  --min-height-app-mscreen: calc(100% - 4rem);
+
+  --height-100: 100px;
+  --height-150: 150px;
+  --height-200: 200px;
+  --height-300: 300px;
+  --height-400: 400px;
+  --height-1\/4vh: 25vh;
+  --height-1\/2vh: 50vh;
+  --height-2\/3vh: 60vh;
+  --height-3\/4vh: 75vh;
+  --height-4\/5vh: 80vh;
+  --height-app-full: calc(100vh - 4rem);
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@layer utilities {
+  html,
+  body {
+    @apply m-0 bg-white p-0;
+    box-sizing: border-box;
+    --scrollbarBG: #ccc;
+    --thumbBG: #14213d;
+
+    @media (prefers-color-scheme: dark) {
+      color-scheme: dark;
+    }
   }
 }
 
@@ -175,7 +296,7 @@ html,
 
 .cardrive-file-upload-wrapper {
   .file-upload {
-    @apply flex min-h-150 w-full items-center justify-center rounded-md bg-white shadow md:min-h-300;
+    @apply flex min-h-150 w-full items-center justify-center rounded-md bg-white shadow-sm md:min-h-300;
 
     .browse-area {
       @apply flex min-h-135 w-95/100 cursor-pointer items-center justify-center rounded-md border-2 border-dashed border-blue-500 bg-white hover:bg-gray-100 md:min-h-280;
@@ -557,7 +678,7 @@ html,
       @apply my-3 flex flex-col sm:flex-row;
 
       .note {
-        @apply rounded-md bg-brand-1 p-3 text-brand-2 shadow-sm;
+        @apply rounded-md bg-brand-1 p-3 text-brand-2 shadow-xs;
 
         p {
           @apply text-base font-semibold;
@@ -692,7 +813,7 @@ html,
 
     a {
       .item-card {
-        @apply flex flex-col items-center justify-center rounded-md border border-gray-100 bg-white py-7 shadow sm:p-5 lg:p-10;
+        @apply flex flex-col items-center justify-center rounded-md border border-gray-100 bg-white py-7 shadow-sm sm:p-5 lg:p-10;
 
         i {
           @apply text-2xl font-bold text-brand-1 lg:text-3xl;
@@ -802,7 +923,7 @@ section.car-list-wrapper {
     @apply mt-10 flex items-center justify-between;
 
     a {
-      @apply bg-gray-200 px-4 py-1 text-sm font-semibold text-brand-1 shadow hover:bg-brand-1 hover:text-brand-3 sm:px-5 sm:text-base lg:px-10 lg:py-2;
+      @apply bg-gray-200 px-4 py-1 text-sm font-semibold text-brand-1 shadow-sm hover:bg-brand-1 hover:text-brand-3 sm:px-5 sm:text-base lg:px-10 lg:py-2;
 
       &.disabled {
         @apply bg-gray-200 text-gray-400;
@@ -818,15 +939,15 @@ section.car-list-wrapper {
       @apply grid grid-cols-6 gap-3 sm:grid-cols-10 lg:inline-block lg:grid-cols-none lg:gap-0;
 
       a {
-        @apply mx-1 bg-brand-1 px-4 py-1 text-sm text-brand-3 shadow hover:bg-gray-200 hover:text-brand-1 sm:text-base sm:font-semibold lg:px-5 lg:py-2;
+        @apply mx-1 bg-brand-1 px-4 py-1 text-sm text-brand-3 shadow-sm hover:bg-gray-200 hover:text-brand-1 sm:text-base sm:font-semibold lg:px-5 lg:py-2;
       }
 
       a.current-page {
-        @apply mx-1 border-t-2 border-brand-2 bg-brand-3 px-4 py-1 text-sm text-brand-1 shadow hover:bg-brand-1 hover:text-brand-2 sm:text-base sm:font-bold lg:px-5 lg:py-2;
+        @apply mx-1 border-t-2 border-brand-2 bg-brand-3 px-4 py-1 text-sm text-brand-1 shadow-sm hover:bg-brand-1 hover:text-brand-2 sm:text-base sm:font-bold lg:px-5 lg:py-2;
       }
 
       a.peak-page {
-        @apply mx-1 border-2 border-brand-1 bg-brand-3 px-4 py-1 text-sm text-brand-1 shadow hover:bg-brand-1 hover:text-brand-2 sm:text-base sm:font-bold lg:px-5 lg:py-2;
+        @apply mx-1 border-2 border-brand-1 bg-brand-3 px-4 py-1 text-sm text-brand-1 shadow-sm hover:bg-brand-1 hover:text-brand-2 sm:text-base sm:font-bold lg:px-5 lg:py-2;
       }
 
       a.showmore {
@@ -902,7 +1023,7 @@ section.car-list-wrapper {
 /* DASBOARD */
 .dash-wrapper {
   .dash {
-    @apply flex min-h-app-mscreen justify-between sm:h-appFull sm:min-h-0 sm:min-h-app-screen;
+    @apply flex min-h-app-mscreen justify-between sm:h-app-full sm:min-h-0 sm:min-h-app-screen;
 
     /* height: calc(100vh - 4rem); */
 
@@ -1101,7 +1222,7 @@ section.admin-content {
         }
 
         .message-input {
-          @apply mt-auto flex items-center bg-brand-3 px-4 pb-2 shadow-sm sm:pb-4;
+          @apply mt-auto flex items-center bg-brand-3 px-4 pb-2 shadow-xs sm:pb-4;
 
           input {
             @apply w-4/5 rounded-bl-md rounded-tl-md bg-white p-2 text-gray-700 sm:w-11/12;
@@ -1119,7 +1240,7 @@ section.admin-content {
             @apply w-full px-4;
 
             .message-wrapper {
-              @apply my-3 w-full rounded-lg px-3 py-2 shadow sm:w-2/3 sm:rounded-2xl sm:p-4 sm:shadow-sm;
+              @apply my-3 w-full rounded-lg px-3 py-2 shadow-sm sm:w-2/3 sm:rounded-2xl sm:p-4 sm:shadow-xs;
 
               .sender {
                 @apply flex justify-between;
@@ -1184,7 +1305,7 @@ section.admin-content {
                 @apply relative bottom-0 right-0;
 
                 .action-cover {
-                  @apply absolute -bottom-7 z-10 flex h-8 w-8 items-center justify-center rounded bg-white shadow-sm;
+                  @apply absolute -bottom-7 z-10 flex h-8 w-8 items-center justify-center rounded bg-white shadow-xs;
                   i {
                     @apply text-lg font-bold;
                   }
@@ -1247,7 +1368,7 @@ section.admin-content {
     @apply relative right-0 top-0 w-full sm:-top-10;
 
     .search-drawer {
-      @apply absolute right-0 top-0 z-20 ml-0 flex min-h-app-mscreen w-full flex-col items-center shadow sm:ml-auto sm:min-h-app-screen sm:w-2/3 xl:w-1/3;
+      @apply absolute right-0 top-0 z-20 ml-0 flex min-h-app-mscreen w-full flex-col items-center shadow-sm sm:ml-auto sm:min-h-app-screen sm:w-2/3 xl:w-1/3;
       backdrop-filter: blur(25px) saturate(200%);
       background-color: rgba(236, 236, 236, 0.9);
 
@@ -1389,7 +1510,7 @@ section.admin-content {
     background: rgba(#cccccc, 0.9);
 
     .map-overlay {
-      @apply absolute right-0 top-0 z-40 bg-white text-brand-1 shadow;
+      @apply absolute right-0 top-0 z-40 bg-white text-brand-1 shadow-sm;
       width: 80vw;
       height: 100vw;
 
