@@ -27,6 +27,16 @@ Install the dependencies:
 pnpm install
 ```
 
+### Set Up Environment Variables
+
+Copy `.env.example` to `.env` and fill all variables
+
+### Initialize Database
+
+```bash
+pnpm db:setup
+```
+
 ### Development
 
 Start the development server with HMR:

@@ -19,6 +19,7 @@ const EnvSchema = z
     BETTER_AUTH_URL: z.string().url(),
     GITHUB_CLIENT_ID: z.string().min(1),
     GITHUB_CLIENT_SECRET: z.string().min(1),
+    DATABASE_URL: z.string().startsWith("file:").default("file:sqlite.db"),
   })
   .transform((env) => {
     return {
