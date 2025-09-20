@@ -9,10 +9,10 @@ const messages = sqliteTable("messages", {
   ...primaryKeyAutoIncrementIDColumn(),
   threadId: integer("thread_id")
     .notNull()
-    .references(() => threads.id),
+    .references(() => threads.id, { onDelete: "cascade" }),
   senderId: text("sender_id")
     .notNull()
-    .references(() => users.id),
+    .references(() => users.id, { onDelete: "cascade" }),
   content: text("content").notNull(),
   isRead: integer("is_read").default(0),
   readAt: integer("read_at", { mode: "timestamp" }),

@@ -9,10 +9,10 @@ const threads = sqliteTable("threads", {
   ...primaryKeyAutoIncrementIDColumn(),
   createdBy: text("created_by")
     .notNull()
-    .references(() => users.id),
+    .references(() => users.id, { onDelete: "cascade" }),
   participantId: text("participant_id")
     .notNull()
-    .references(() => users.id),
+    .references(() => users.id, { onDelete: "cascade" }),
   ...timestampColumns(),
 });
 

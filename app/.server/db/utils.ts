@@ -20,7 +20,7 @@ export function userIdColumn() {
   return {
     userId: text("user_id")
       .notNull()
-      .references(() => users.id),
+      .references(() => users.id, { onDelete: "cascade" }),
   };
 }
 
