@@ -1,5 +1,5 @@
 import type { Route } from "./+types/register";
-import { Form, Link, redirect, useNavigate, useSearchParams } from "react-router";
+import { Form, Link, useNavigate, useSearchParams } from "react-router";
 import { authClient } from "~/lib/auth.client";
 import { AUTHENTICATED_REDIRECT, REDIRECT_PATH_PARAM } from "~/constants";
 import { type SignupSchemaType, signupSchema } from "~/schemas/auth.schema";
@@ -12,15 +12,7 @@ export function meta() {
   return [{ title: "Register" }];
 }
 
-export async function loader({ context }: Route.LoaderArgs) {
-  if (context.isAuthenticated) {
-    return redirect(AUTHENTICATED_REDIRECT);
-  }
-
-  return {};
-}
-
-export default function SignUp() {
+export default function SignUp(props: Route.ComponentProps) {
   const [searchParams] = useSearchParams();
 
   const redirectTo = searchParams.get(REDIRECT_PATH_PARAM);

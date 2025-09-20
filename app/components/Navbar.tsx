@@ -6,7 +6,7 @@ import { SIGNOUT_REDIRECT } from "~/constants";
 import type { User } from "better-auth";
 
 type NavbarProps = {
-  user?: User;
+  user?: User | null;
 };
 
 export default function Navbar({ user }: NavbarProps) {

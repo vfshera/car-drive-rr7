@@ -7,7 +7,7 @@ import Pagination from "./Pagination";
 type ListingProps = {
   fullMode?: boolean;
   inAdmin?: boolean;
-  MyCars?: boolean;
+  isMyCars?: boolean;
   carResults: Paginated<SelectCar>;
 };
 
@@ -15,7 +15,7 @@ export function Listing({
   carResults,
   fullMode = true,
   inAdmin = false,
-  MyCars = false,
+  isMyCars = false,
 }: ListingProps) {
   const { data: cars, pagination } = carResults;
 
@@ -25,7 +25,7 @@ export function Listing({
     <section className="car-list-wrapper">
       {/* ADD CARS SECTION */}
 
-      {MyCars && isOpen && (
+      {isMyCars && isOpen && (
         <section className="add-car-form-wrapper">{/* <AddCar setIsOpen={setIsOpen} /> */}</section>
       )}
 
@@ -36,9 +36,9 @@ export function Listing({
       {cars?.length != 0 && !isOpen && (
         <>
           <div className="list-header car-drive-container">
-            <h1>{MyCars ? "My Cars" : "Top Listings"}</h1>
+            <h1>{isMyCars ? "My Cars" : "Top Listings"}</h1>
 
-            {MyCars && (
+            {isMyCars && (
               <>
                 <button
                   className="add-cars"
@@ -103,9 +103,9 @@ export function Listing({
 
       {/* NO CARS */}
       {cars?.length == 0 && !inAdmin && (
-        <div className="flex h-1/2vh w-full flex-col items-center justify-center">
-          <h1 className="text-2xl font-bold text-brand-1">No Cars Posted Yet!</h1>
-          <p className="text-lg italic text-gray-800">
+        <div className="h-1/2vh flex w-full flex-col items-center justify-center">
+          <h1 className="text-brand-1 text-2xl font-bold">No Cars Posted Yet!</h1>
+          <p className="text-lg text-gray-800 italic">
             You can{" "}
             <Link to="/login" className="text-brand-2">
               Create Your Account Here
@@ -116,8 +116,8 @@ export function Listing({
       )}
       {/* ADMIN NO CARS */}
       {cars?.length == 0 && inAdmin && (
-        <div className="flex h-3/4vh w-full flex-col items-center justify-center">
-          <p className="mb-3 text-center text-xl text-brand-1">Seems We couldn't Find Cars!</p>
+        <div className="h-3/4vh flex w-full flex-col items-center justify-center">
+          <p className="text-brand-1 mb-3 text-center text-xl">Seems We couldn't Find Cars!</p>
           {inAdmin && (
             <button
               className="add-cars"

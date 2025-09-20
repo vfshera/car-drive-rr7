@@ -1,26 +1,20 @@
 import type { Route } from "./+types/profile";
 import { useState } from "react";
-import { requireAuth } from "~/.server/auth/utils";
-import { db } from "~/.server/db";
 import { getMeta } from "~/utils/meta";
+import { appContext } from "$/server/context";
 
 export function meta() {
   return [...getMeta({ title: "Profile" })];
 }
 
-export async function loader({ request }: Route.LoaderArgs) {
-  const session = await requireAuth(request);
+export async function loader({ context }: Route.LoaderArgs) {
+  const { user, db } = context.get(appContext);
 
-  const result = await db.query.users.findFirst({
-    where: (users, { eq }) => eq(users.id, session.user.id),
-    with: {
-      accounts: true,
-    },
+  const accounts = await db.query.accounts.findMany({
+    where: (acc, { eq }) => eq(acc.userId, user!.id),
   });
 
-  const { accounts, ...user } = result!;
-
-  return { user, accounts };
+  return { user: user!, accounts };
 }
 
 export default function Account({ loaderData: { user, accounts } }: Route.ComponentProps) {

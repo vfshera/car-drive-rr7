@@ -1,16 +1,16 @@
 import type { Route } from "./+types/index";
 import { Link } from "react-router";
-import { requireAuth } from "~/.server/auth/utils";
 import { getMeta } from "~/utils/meta";
+import { appContext } from "$/server/context";
 
 export function meta() {
   return [...getMeta({ title: "Dashboard" })];
 }
 
-export async function loader({ request }: Route.LoaderArgs) {
-  const { user } = await requireAuth(request);
+export async function loader({ context }: Route.LoaderArgs) {
+  const { user } = context.get(appContext);
 
-  return { user };
+  return { user: user! };
 }
 
 export default function Dashboard({ loaderData: { user } }: Route.ComponentProps) {

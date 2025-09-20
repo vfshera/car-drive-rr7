@@ -1,5 +1,5 @@
 import type { Route } from "./+types/login";
-import { Form, Link, redirect, useNavigate, useSearchParams } from "react-router";
+import { Form, Link, useNavigate, useSearchParams } from "react-router";
 import { authClient } from "~/lib/auth.client";
 import { GithubIcon } from "~/components/icons";
 import { AUTHENTICATED_REDIRECT, REDIRECT_PATH_PARAM } from "~/constants";
@@ -13,15 +13,7 @@ export function meta() {
   return [{ title: "Login" }];
 }
 
-export async function loader({ context }: Route.LoaderArgs) {
-  if (context.isAuthenticated) {
-    return redirect(AUTHENTICATED_REDIRECT);
-  }
-
-  return {};
-}
-
-export default function Login() {
+export default function Login(props: Route.ComponentProps) {
   const [searchParams] = useSearchParams();
 
   const redirectTo = searchParams.get(REDIRECT_PATH_PARAM);

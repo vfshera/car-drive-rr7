@@ -8,13 +8,7 @@ export function meta() {
   return [{ title: "Contact" }];
 }
 
-export async function action({ request }: Route.ActionArgs) {
-  const contactData = Object.fromEntries(await request.formData()) as ContactSchemaType;
-
-  return { ok: true };
-}
-
-export default function Contact() {
+export default function Contact(props: Route.ComponentProps) {
   const submit = useSubmit();
 
   const {

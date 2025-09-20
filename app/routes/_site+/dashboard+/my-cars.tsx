@@ -1,15 +1,15 @@
 import type { Route } from "./+types/cars";
-import { requireAuth } from "~/.server/auth/utils";
 import { loadMyCars } from "~/.server/db/queries/cars.queries";
 import { Listing } from "~/components/Listing";
 import { getMeta } from "~/utils/meta";
+import { appContext } from "$/server/context";
 
 export function meta() {
   return [...getMeta({ title: "My Cars" })];
 }
 
-export async function loader({ request }: Route.LoaderArgs) {
-  const { user } = await requireAuth(request);
+export async function loader({ request, context }: Route.LoaderArgs) {
+  const { user } = context.get(appContext);
 
   const url = new URL(request.url);
 
@@ -17,11 +17,11 @@ export async function loader({ request }: Route.LoaderArgs) {
 
   const perPage = Number(url.searchParams.get("perPage")) || undefined;
 
-  const carResults = await loadMyCars(user.id, page, perPage);
+  const carResults = await loadMyCars(user!.id, page, perPage);
 
   return { carResults };
 }
 
 export default function DashboardCars({ loaderData: { carResults } }: Route.ComponentProps) {
-  return <Listing carResults={carResults} fullMode inAdmin MyCars />;
+  return <Listing carResults={carResults} fullMode inAdmin isMyCars />;
 }
