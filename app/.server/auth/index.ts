@@ -1,5 +1,5 @@
 import { db } from "../db";
-import env from "../env";
+import { env } from "../env";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 
@@ -18,3 +18,9 @@ export const auth = betterAuth({
     usePlural: true,
   }),
 });
+
+export type AuthType = typeof auth;
+
+export type Session = typeof auth.$Infer.Session;
+
+export type User = Session["user"];
