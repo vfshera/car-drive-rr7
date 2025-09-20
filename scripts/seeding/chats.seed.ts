@@ -1,6 +1,6 @@
-import { db } from "..";
-import messages from "../schema/messages.table";
-import threads from "../schema/threads.table";
+import { db } from "~/.server/db";
+import messages from "~/.server/db/schema/messages.table";
+import threads from "~/.server/db/schema/threads.table";
 import kleur from "kleur";
 import { cluster, draw } from "radashi";
 

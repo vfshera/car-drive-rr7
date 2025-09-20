@@ -1,7 +1,7 @@
+import { db } from "~/.server/db";
+import { cars } from "~/.server/db/schema";
+import type { InsertCar } from "~/.server/db/schema/cars.table";
 import { getMakeModelObjects } from "~/data/cars";
-import { db } from "..";
-import { cars } from "../schema";
-import type { InsertCar } from "../schema/cars.table";
 import kleur from "kleur";
 import { draw, random, shuffle } from "radashi";
 
