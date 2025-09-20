@@ -1,4 +1,5 @@
 import type { Session } from "~/.server/auth";
+import type { DB } from "~/.server/db";
 import type { Env, PublicEnv } from "~/.server/env";
 import type { HonoServerOptions } from "react-router-hono-server/node";
 
@@ -25,6 +26,7 @@ export type BaseContext = SessionVariables & {
   appVersion: string;
   clientEnv: PublicEnv;
   env: Env;
+  db: DB;
 };
 
 declare module "react-router" {

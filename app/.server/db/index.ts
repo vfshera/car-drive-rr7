@@ -3,3 +3,5 @@ import * as schema from "./schema";
 import { drizzle } from "drizzle-orm/libsql";
 
 export const db = drizzle(env.DATABASE_URL, { schema });
+
+export type DB = typeof db;
