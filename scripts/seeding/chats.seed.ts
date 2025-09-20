@@ -55,7 +55,12 @@ const generateRandomTimestampWithinLast7Days = (daysAgo = 7): Date => {
   return timestamp;
 };
 
-export default async function seedChats() {
+export default async function seedChats(refresh = true) {
+  if (refresh) {
+    await db.delete(threads);
+    // No need for ->  await db.delete(messages); because of cascade delete
+  }
+
   const users = await db.query.users.findMany({ columns: { id: true } });
 
   if (!users.length) {

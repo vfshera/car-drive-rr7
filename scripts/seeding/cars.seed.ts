@@ -1,6 +1,5 @@
 import { db } from "~/.server/db";
-import { cars } from "~/.server/db/schema";
-import type { InsertCar } from "~/.server/db/schema/cars.table";
+import cars, { type InsertCar } from "~/.server/db/schema/cars.table";
 import { getMakeModelObjects } from "~/data/cars";
 import pc from "picocolors";
 import { draw, random, shuffle } from "radashi";
@@ -19,7 +18,11 @@ function randomCoordinates() {
   return `${random(MIN, MAX).toFixed(2)},${random(MIN, MAX).toFixed(2)}`;
 }
 
-export default async function seedCars() {
+export default async function seedCars(refresh = true) {
+  if (refresh) {
+    await db.delete(cars);
+  }
+
   const userIds = await db.query.users.findMany({ columns: { id: true } });
 
   if (userIds.length === 0) {
