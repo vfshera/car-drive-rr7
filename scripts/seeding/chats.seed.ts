@@ -1,7 +1,7 @@
 import { db } from "~/.server/db";
 import messages from "~/.server/db/schema/messages.table";
 import threads from "~/.server/db/schema/threads.table";
-import kleur from "kleur";
+import pc from "picocolors";
 import { cluster, draw } from "radashi";
 
 function prepareMessages() {
@@ -59,7 +59,7 @@ export default async function seedChats() {
   const users = await db.query.users.findMany({ columns: { id: true } });
 
   if (!users.length) {
-    console.error(kleur.red("🚨 No users found to seed chats - Seed/Create a user first"));
+    console.error(pc.red("🚨 No users found to seed chats - Seed/Create a user first"));
 
     return;
   }
@@ -104,5 +104,5 @@ export default async function seedChats() {
     }
   }
 
-  console.log(kleur.green("🌱 Chats seeded successfully!"));
+  console.log(pc.green("🌱 Chats seeded successfully!"));
 }

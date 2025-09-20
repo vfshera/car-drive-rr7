@@ -39,9 +39,6 @@ export function loadEnv<T extends z.ZodTypeAny>(schema: T): z.infer<T> {
 export const appEnvSchema = z
   .object({
     NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
-    DB_MIGRATING: z.string().transform((val) => {
-      return val === "true";
-    }),
     APP_URL: z.url(),
     BETTER_AUTH_SECRET: z.string().min(1),
     BETTER_AUTH_URL: z.url(),

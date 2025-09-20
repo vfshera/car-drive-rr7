@@ -2,7 +2,7 @@ import { db } from "~/.server/db";
 import { cars } from "~/.server/db/schema";
 import type { InsertCar } from "~/.server/db/schema/cars.table";
 import { getMakeModelObjects } from "~/data/cars";
-import kleur from "kleur";
+import pc from "picocolors";
 import { draw, random, shuffle } from "radashi";
 
 function prepareCars(items = 10) {
@@ -23,7 +23,7 @@ export default async function seedCars() {
   const userIds = await db.query.users.findMany({ columns: { id: true } });
 
   if (userIds.length === 0) {
-    console.error(kleur.red("🚨 No users found to seed cars - Seed/Create a user first"));
+    console.error(pc.red("🚨 No users found to seed cars - Seed/Create a user first"));
 
     return;
   }
@@ -37,5 +37,5 @@ export default async function seedCars() {
 
   await db.insert(cars).values(data);
 
-  console.log(kleur.green("🌱 Cars seeded successfully!"));
+  console.log(pc.green("🌱 Cars seeded successfully!"));
 }

@@ -1,6 +1,6 @@
 import { auth } from "~/.server/auth";
 import { APIError } from "better-auth/api";
-import kleur from "kleur";
+import pc from "picocolors";
 
 export default async function seedUsers() {
   try {
@@ -20,16 +20,14 @@ export default async function seedUsers() {
       },
     });
 
-    console.log(kleur.green("🌱 User seeded successfully!"));
+    console.log(pc.green("🌱 User seeded successfully!"));
   } catch (error) {
     if (error instanceof APIError) {
-      console.error(
-        kleur.red(`🚨 Error seeding user: '${error.message}'\nStatus: '${error.status}'`),
-      );
+      console.error(pc.red(`🚨 Error seeding user: '${error.message}'\nStatus: '${error.status}'`));
 
       return;
     }
 
-    console.error(kleur.red(`🚨 Error seeding user: ${(error as { message?: string })?.message}`));
+    console.error(pc.red(`🚨 Error seeding user: ${(error as { message?: string })?.message}`));
   }
 }
